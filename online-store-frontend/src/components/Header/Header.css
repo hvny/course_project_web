@@ -1,0 +1,103 @@
+.header {
+    background-color: #F6B221;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 50px;
+    box-sizing: border-box;
+}
+
+.header__content {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo {
+    width: 103px;
+    height: 74px;
+}
+
+.header__navigation {
+    min-width: 300px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.header__navigation-list {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.header__menu-item {
+    padding: 8px 15px;
+}
+
+.header__link {
+    color: #ffffff;
+    font-size: 23px;
+    transition: opacity .3s ease;
+    padding: 0;
+}
+
+.header__menu-link {   
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #663334;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 15px;
+}
+
+.header__menu-link:hover {
+    background-color: #c4c4c4;
+} 
+
+.header__link:hover {
+    opacity: .6;
+}
+
+.header__phone-number {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.header__buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header__button_cart {
+    background-color: #663334;
+}
+
+.header__icon_cart {
+    color: #663334;
+}
+
+.header__button_login {
+    background-color: #663334;
+    width: 120px;
+    height: min-content;
+    border-radius: 10px;
+}
+
+.header__icon_login {
+    color: #ffffff;
+}
+
+.header__span {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0 5px 0 0;
+    color: #ffffff;
+}
