@@ -1,13 +1,21 @@
 .cards{
-       
 }
 
 .cards__title {
-
+    margin: 30px auto 15px auto;
+    color: #663334;
+    width: min-content;
 }
 
 .cards__container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
+}
+
+@media screen and (min-width: 768) and (max-width: 1023px) {
+    .cards__container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
 }

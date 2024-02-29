@@ -4,7 +4,12 @@
     display: flex;
     justify-content: space-between;
     padding: 9px 50px;
+    margin: 0 0 30px 0;
     box-sizing: border-box;
+
+    /* position: sticky;
+    top: 0;
+    z-index: 10; */
 }
 
 .header__content {
@@ -34,6 +39,10 @@
     margin: 0;
 }
 
+.header__dropdown-menu {
+    z-index: 20;
+}
+
 .header__menu-item {
     padding: 8px 15px;
 }
@@ -43,6 +52,11 @@
     font-size: 23px;
     transition: opacity .3s ease;
     padding: 0;
+    text-decoration: none;
+}
+
+.header__link_active {
+    text-decoration: underline;
 }
 
 .header__menu-link {   
@@ -53,6 +67,7 @@
     border-radius: 8px;
     cursor: pointer;
     padding: 8px 15px;
+    text-decoration: none;
 }
 
 .header__menu-link:hover {
@@ -63,11 +78,19 @@
     opacity: .6;
 }
 
-.header__phone-number {
+.header__phone-container {
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+}
+
+.header__phone-number {
     font-size: 23px;
     font-weight: 400;
     line-height: 1.5;
+    margin: 0;
 }
 
 .header__buttons {

@@ -11,7 +11,6 @@ export default function App() {
   return (
     <div className="page">
       <Header />
-
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/events" element={<Events />} />

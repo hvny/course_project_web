@@ -1,12 +1,13 @@
 import CardsContainer from "../CardsContainer/CardsContainer"
 import "./Main.css";
 
-export default function Main(props) {
+export default function Main() {
     return (
         <main className="main">
-            <CardsContainer containerTitle={"Выпечка"} id="#bakery-products" />
-            <CardsContainer containerTitle={"Десерты"} id="#desserts" />
-            <CardsContainer containerTitle={"Напитки"} id="#drinks" />
+            <h1 className="main__title">Меню</h1>
+            <CardsContainer containerTitle={"Выпечка"} sectionId="bakery-products" />
+            <CardsContainer containerTitle={"Десерты"} sectionId="desserts" />
+            <CardsContainer containerTitle={"Напитки"} sectionId="drinks" />
         </main>
     );
 }

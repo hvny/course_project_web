@@ -1,6 +1,5 @@
 import { forwardRef, useContext } from 'react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { PopupContext } from '@mui/base/Unstable_Popup';
 import { Dropdown } from '@mui/base/Dropdown';
@@ -11,6 +10,7 @@ import { styled } from '@mui/system';
 import { CssTransition } from '@mui/base/Transitions'
 
 function Navigation(props) {
+    const location = useLocation();
     const MenuItem = styled(BaseMenuItem)(({ theme }) => ``,);
 
     const MenuButton = styled(BaseMenuButton)(
@@ -27,7 +27,7 @@ function Navigation(props) {
         list-style: none;
         padding: 6px;
         border-radius: 12px;
-        z-index: 1;
+        z-index: 20;
         background-color: #ffffff;
         text-align: center;
       
@@ -73,20 +73,20 @@ function Navigation(props) {
             <ul className="header__navigation-list">
                 <li className="header__navigation-list-item">
                     <Dropdown>
-                        <MenuButton className='header__link'>Меню</MenuButton>
-                        <Menu slots={{ listbox: AnimatedListbox }}>
+                        <MenuButton className={`header__link ${location.pathname === "/" ? "header__link_active" : ""}`}>Меню</MenuButton>
+                        <Menu slots={{ listbox: AnimatedListbox }} className='header__dropdown-menu'>
                             <MenuItem className="header__menu-item"><HashLink to="/#bakery-products" className="link header__menu-link">Выпечка</HashLink></MenuItem>
                             <MenuItem className="header__menu-item"><HashLink to="/#desserts" className="link header__menu-link">Десерты</HashLink></MenuItem>
-                            <MenuItem className="header__menu-item"><Link to="/#drinks" className="link header__menu-link">Напитки</Link></MenuItem>
+                            <MenuItem className="header__menu-item"><HashLink to="/#drinks" className="link header__menu-link">Напитки</HashLink></MenuItem>
                         </Menu>
                     </Dropdown>
                     
                 </li>
                 <li className="header__navigation-list-item">
-                    <Link to="/events" className="link header__link">Акции</Link>
+                    <NavLink to="/events" className={`header__link ${location.pathname === "/events" ? "header__link_active" : ""}`}>Акции</NavLink>
                 </li>
                 <li className="header__navigation-list-item">
-                    <Link to="/about" className="link header__link">О нас</Link>
+                    <a href="https://www.hlebnitca.ru/about" target="__blank" className="link header__link">О нас</a>
                 </li>
             </ul>
             
