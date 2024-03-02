@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Button from '@mui/material/Button';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import IconButton from '@mui/material/IconButton';
 import LoginIcon from '@mui/icons-material/Login';
@@ -12,7 +11,7 @@ import logo from "../../images/logo.svg";
 function Header(props) {
     return (
         <header className="header">
-            <Link to="/" className="header__logo-link"><img src={logo} className="header__logo" /></Link>
+            <Link to="/" className="header__logo-link"><img src={logo} className="header__logo" alt="Логотип компании"/></Link>
             <Navigation />
             <div className="header__phone-container">
                 <LocalPhoneIcon size="large" />

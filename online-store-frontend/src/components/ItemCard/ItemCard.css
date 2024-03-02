@@ -1,3 +1,10 @@
 .card {
-    width: 250px;
+    width: 220px;
+    /* height: 270px; */
+}
+
+@media screen and (min-width: 1280px)  {
+    .card {
+        width: auto;
+    }
 }
