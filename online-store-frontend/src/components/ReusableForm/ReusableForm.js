@@ -1,4 +1,3 @@
-// import PhoneInput from 'react-phone-number-input/input';
 import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
@@ -16,15 +15,3 @@ export default function ReusableForm({ onSubmit, defaultValues, children }) {
         </form>
     );
 }
-/**
-  const [value, setValue] = useState()
-<PhoneInput
-            labels={ru}
-            placeholder="Ваш телефон"
-            defaultCountry="RU"
-            countryCallingCodeEditable={false}
-            value={value}
-            onChange={setValue} 
-            // error={value ? (isValidPhoneNumber(value) ? undefined : 'Invalid phone number') : 'Phone number required'}
-        />
-         */
