@@ -2,7 +2,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 
-import ru from 'react-phone-number-input/locale/ru';
+
 import { useState } from 'react';
 
 export default function ReusableForm({ onSubmit, defaultValues, children }) {

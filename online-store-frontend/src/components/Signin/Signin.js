@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import PhoneInput from 'react-phone-number-input/input';
-import ru from 'react-phone-number-input/locale/ru';
+
+import TextField from '@mui/material/TextField';
 import ReusableForm from "../ReusableForm/ReusableForm";
-
-  
-
-         
+import { Button, IconButton } from "@mui/material";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import phoneSchema from "../../utils/schemes/phoneNumberScheme";
+import { joiResolver } from '@hookform/resolvers/joi';
 
 export default function Signin() {
     const [step, setStep] = useState(1);
-    const { handleSubmit, control, formState: { errors }, setError, setValue, trigger, } = useForm({
-        defaultValues: {
-            name: '',
-            phone: '',
-        },
+    const { handleSubmit, control, formState: { errors, isValid, isDirty }} = useForm({ 
+        resolver: joiResolver(phoneSchema),
+        mode: "onChange",
     });
+
     const [numberValue, setNumberValue] = useState()
 
     async function onSubmit(data) {
@@ -34,72 +33,108 @@ export default function Signin() {
     };
 
     return (
-        step == 1 ? 
-        <ReusableForm
-            onSubmit={handleSubmit(onSubmit)}
-            defaultValues={{ name: '', phone: '' }}
-        >
-            <Controller
-                name="name"
-                control={control}
-                defaultValue=""
-                rules={{ required: 'Name is required' }}
-                render={({ field }) => (
-                    <input
-                        {...field}
-                        placeholder="Name"
-                        onBlur={() => trigger('name')}
-                    />
-                )}
-            />
-            <ErrorMessage errors={errors} name="name" />
-
-            <Controller
-                name="phoneNumber"
-                control={control}
-                rules={{
-                    // required: 'Введите номер телефонаа',
-                    // pattern: {
-                    //     value: /^\d{10}$/,
-                    //     message: 'Invalid phone number',
-                    // },
-                }}
-                render={({ field }) => (
-                    <PhoneInput
-                        {...field}
-                        labels={ru}
-                        required
-                        placeholder="Ваш телефон"
-                        defaultCountry="RU"
-                        countryCallingCodeEditable={false}
-                        value={numberValue}
-                        onChange={setNumberValue} 
-                        onBlur={() => trigger('phone')}
-                    />
+        step == 1 ?
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field }) => (
+                        <TextField 
+                            id="outlined-basic" 
+                            label="Номер телефона" 
+                            variant="outlined" 
+                            color="secondary"
+                        />  
                     )}
-            />
-            <ErrorMessage errors={errors} name="phoneNumber" />
-            <button type="submit">Send SMS</button>
-        </ReusableForm>
+                />
+                
+                <IconButton aria-label="NavigateNext" size="large" color="error" type="submit"> 
+                    <span className="form__button-text">Дальше</span>
+                    <NavigateNextIcon />
+                </IconButton>
+            </form>
+        </>
         :
-        <ReusableForm onSubmit={handleSubmit(onVerifyCodeSubmit)}>
-            <Controller
-                name="code"
-                control={control}
-                defaultValue=""
-                rules={{ required: 'SMS code is required' }}
-                render={({ field }) => (
-                    <input
-                    {...field}
-                    placeholder="SMS code"
-                    onBlur={() => trigger('code')}
-                    />
-                )}
-            />
-            <ErrorMessage errors={errors} name="code" />
+        <>
+            <form>
+                <TextField
+                    id="outlined-basic" 
+                    label="Код" 
+                    variant="outlined" 
+                    color="secondary"
+                />
+                <Button>Отправить</Button>
+                
+            </form>
+        </>
+    //     step == 1 ? 
+    //     <ReusableForm
+    //         onSubmit={handleSubmit(onSubmit)}
+    //         defaultValues={{ name: '', phone: '' }}
+    //     >
+    //         <Controller
+    //             name="name"
+    //             control={control}
+    //             defaultValue=""
+    //             rules={{ required: 'Name is required' }}
+    //             render={({ field }) => (
+    //                 <input
+    //                     {...field}
+    //                     placeholder="Name"
+    //                     onBlur={() => trigger('name')}
+    //                 />
+    //             )}
+    //         />
+    //         <ErrorMessage errors={errors} name="name" />
 
-            <button type="submit">Verify Code</button>
-      </ReusableForm>
+    //         <Controller
+    //             name="phoneNumber"
+    //             control={control}
+    //             rules={{
+    //                 // required: 'Введите номер телефонаа',
+    //                 // pattern: {
+    //                 //     value: /^\d{10}$/,
+    //                 //     message: 'Invalid phone number',
+    //                 // },
+    //             }}
+    //             render={({ field }) => (
+    //                 <PhoneInput
+    //                     {...field}
+    //                     labels={ru}
+    //                     required
+    //                     placeholder="Ваш телефон"
+    //                     defaultCountry="RU"
+    //                     countryCallingCodeEditable={false}
+    //                     value={numberValue}
+    //                     onChange={setNumberValue} 
+    //                     onBlur={() => trigger('phone')}
+    //                     error={numberValue ? (isValidPhoneNumber(numberValue) ? undefined : 'Invalid phone number') : 'Phone number required'}
+    //                 />
+    //                 )}
+    //         />
+    //         <ErrorMessage errors={errors} name="phoneNumber" />
+    //         <button type="submit">Send SMS</button>
+    //     </ReusableForm>
+    //     :
+    //     <ReusableForm onSubmit={handleSubmit(onVerifyCodeSubmit)}>
+    //         <Controller
+    //             name="code"
+    //             control={control}
+    //             defaultValue=""
+    //             rules={{ required: 'SMS code is required' }}
+    //             render={({ field }) => (
+    //                 <input
+    //                 {...field}
+    //                 placeholder="SMS code"
+    //                 onBlur={() => trigger('code')}
+    //                 />
+    //             )}
+    //         />
+    //         <ErrorMessage errors={errors} name="code" />
+
+    //         <button type="submit">Verify Code</button>
+    //   </ReusableForm>
         
     );
 }
