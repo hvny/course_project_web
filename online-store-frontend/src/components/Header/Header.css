@@ -44,7 +44,6 @@
 .header__link {
     color: #ffffff;
     font-size: 23px;
-    transition: opacity .3s ease;
     padding: 0;
     text-decoration: none;
 }
@@ -67,10 +66,6 @@
 .header__menu-link:hover {
     background-color: #c4c4c4;
 } 
-
-.header__link:hover {
-    opacity: .6;
-}
 
 .header__phone-container {
     color: #ffffff;

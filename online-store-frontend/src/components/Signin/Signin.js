@@ -3,7 +3,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 import TextField from '@mui/material/TextField';
-import ReusableForm from "../ReusableForm/ReusableForm";
 import { Button, IconButton } from "@mui/material";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import phoneSchema from "../../utils/schemes/phoneNumberScheme";
@@ -33,14 +32,15 @@ export default function Signin() {
     };
 
     return (
-        step == 1 ?
+        step === 1 ?
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
                 <Controller
                     name="phone"
                     control={control}
                     render={({ field }) => (
                         <TextField 
+                            name="phone"
                             id="outlined-basic" 
                             label="Номер телефона" 
                             variant="outlined" 
@@ -49,7 +49,7 @@ export default function Signin() {
                     )}
                 />
                 
-                <IconButton aria-label="NavigateNext" size="large" color="error" type="submit"> 
+                <IconButton aria-label="NavigateNext" size="large" color="error" type="submit" onClick={handleSubmit(onSubmit)}> 
                     <span className="form__button-text">Дальше</span>
                     <NavigateNextIcon />
                 </IconButton>

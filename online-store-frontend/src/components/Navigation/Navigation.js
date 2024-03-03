@@ -73,7 +73,7 @@ function Navigation(props) {
             <ul className="header__navigation-list">
                 <li className="header__navigation-list-item">
                     <Dropdown>
-                        <MenuButton className={`header__link ${location.pathname === "/" ? "header__link_active" : ""}`}>Меню</MenuButton>
+                        <MenuButton className={`link header__link ${location.pathname === "/" ? "header__link_active" : ""}`}>Меню</MenuButton>
                         <Menu slots={{ listbox: AnimatedListbox }} className='header__dropdown-menu'>
                             <MenuItem className="header__menu-item"><HashLink to="/#bakery-products" className="link header__menu-link">Выпечка</HashLink></MenuItem>
                             <MenuItem className="header__menu-item"><HashLink to="/#desserts" className="link header__menu-link">Десерты</HashLink></MenuItem>
@@ -83,7 +83,7 @@ function Navigation(props) {
                     
                 </li>
                 <li className="header__navigation-list-item">
-                    <NavLink to="/events" className={`header__link ${location.pathname === "/events" ? "header__link_active" : ""}`}>Акции</NavLink>
+                    <NavLink to="/events" className={`link header__link ${location.pathname === "/events" ? "header__link_active" : ""}`}>Акции</NavLink>
                 </li>
                 <li className="header__navigation-list-item">
                     <a href="https://www.hlebnitca.ru/about" target="__blank" className="link header__link">О нас</a>

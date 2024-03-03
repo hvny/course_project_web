@@ -10,7 +10,6 @@
 }
 
 .cards__container {
-    border:1px solid red;
     display: grid;
     grid-template-columns: repeat(4, 220px);
     gap: 16px;
