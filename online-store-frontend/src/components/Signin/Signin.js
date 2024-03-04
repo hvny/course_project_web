@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, FormProvider } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 
 import TextField from '@mui/material/TextField';
@@ -10,14 +10,19 @@ import { joiResolver } from '@hookform/resolvers/joi';
 
 export default function Signin() {
     const [step, setStep] = useState(1);
-    const { handleSubmit, control, formState: { errors, isValid, isDirty }} = useForm({ 
+    const { handleSubmit, control, formState: { errors, isValid, isDirty }, methods} = useForm({ 
         resolver: joiResolver(phoneSchema),
         mode: "onChange",
+        defaultValues: {
+            phone: "+7",
+        }
     });
 
     const [numberValue, setNumberValue] = useState()
 
     async function onSubmit(data) {
+        console.log("1 шаг успешно выполнен");
+
         console.log(data);
         // Send SMS with verification code to the provided phone number
         // ...
@@ -26,21 +31,24 @@ export default function Signin() {
     };
 
     const onVerifyCodeSubmit = async (data) => {
+        console.log("2 шаг успешно выполнен");
         console.log(data);
         // Verify the SMS code and complete the registration
         // ...
     };
 
     return (
-        step === 1 ?
-        <>
-            <form>
+        <FormProvider {...methods}>
+        {step === 1 ?
+            <div className="signin__container signin__container_step-1">
                 <Controller
                     name="phone"
                     control={control}
-                    render={({ field }) => (
+                    error={errors?.phone}
+                    render={({ field: {value, onChange} }) => (
                         <TextField 
-                            name="phone"
+                            value={value}
+                            onChange={onChange}
                             id="outlined-basic" 
                             label="Номер телефона" 
                             variant="outlined" 
@@ -49,15 +57,53 @@ export default function Signin() {
                     )}
                 />
                 
-                <IconButton aria-label="NavigateNext" size="large" color="error" type="submit" onClick={handleSubmit(onSubmit)}> 
+                <IconButton aria-label="NavigateNext" size="large" color="default" type="submit" onClick={handleSubmit(onSubmit)}> 
                     <span className="form__button-text">Дальше</span>
                     <NavigateNextIcon size="large" />
                 </IconButton>
-            </form>
-        </>
-        :
-        <>
-            <form>
+            </div> 
+            :
+            <div className="signin__container signin__container_step-2">
+                <Controller
+                    name="code"
+                    control={control}
+                    render={({ field: {value, onChange} }) => (
+                        <TextField 
+                            value={value}
+                            type="number"
+                            onChange={onChange}
+                            id="outlined-basic" 
+                            label="Код" 
+                            variant="outlined" 
+                            color="secondary"
+                        />  
+                    )}
+                />
+                <IconButton aria-label="NavigateNext" size="large" color="default" type="submit" onClick={handleSubmit(onVerifyCodeSubmit)}> 
+                    <span className="form__button-text">Дальше</span>
+                    <NavigateNextIcon size="large" />
+                </IconButton>
+            </div>
+        
+        }
+            
+        </FormProvider>
+            /* 
+            <FormProvider>
+                <Controller
+                    name="phone"
+                    control={control}
+                    render={({ field: {value, onChange} }) => (
+                        <TextField 
+                            value={value}
+                            onChange={onChange}
+                            id="outlined-basic" 
+                            label="Номер телефона" 
+                            variant="outlined" 
+                            color="secondary"
+                        />  
+                    )}
+                />
                 <TextField
                     id="outlined-basic" 
                     label="Код" 
@@ -66,8 +112,7 @@ export default function Signin() {
                 />
                 <Button>Отправить</Button>
                 
-            </form>
-        </>
+            </FormProvider> */
     //     step == 1 ? 
     //     <ReusableForm
     //         onSubmit={handleSubmit(onSubmit)}
