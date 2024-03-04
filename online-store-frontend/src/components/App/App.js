@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Events from "../Events/Events";
 import Order from "../Order/Order";
+import Footer from "../Footer/Footer";
 
 import "../Link/Link.css"
 import "./App.css";
@@ -11,11 +12,14 @@ export default function App() {
   return (
     <div className="page">
       <Header />
+      
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/events" element={<Events />} />
         <Route path="/order" element={<Order />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }

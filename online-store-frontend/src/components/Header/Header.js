@@ -54,7 +54,7 @@ function Header(props) {
                             <ShoppingBagOutlinedIcon className="header__icon_cart" size="large" />
                         </IconButton>
                         <Drawer open={isCartOpen} onClose={handleCartClick} anchor="right">
-                            <Cart handleClose={handleCartClick} isOpen={isCartOpen} />
+                            <Cart handleClose={handleCartClick}  />
                         </Drawer>
                         <IconButton aria-label="Login" size="large" className="header__button_login" style={{borderRadius: "15px", backgroundColor: "#663334", padding: "4px 5px"}} onClick={handleSigninButtonClick}>
                             <span className="header__span">Войти</span>

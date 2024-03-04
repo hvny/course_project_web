@@ -51,7 +51,7 @@ export default function Signin() {
                 
                 <IconButton aria-label="NavigateNext" size="large" color="error" type="submit" onClick={handleSubmit(onSubmit)}> 
                     <span className="form__button-text">Дальше</span>
-                    <NavigateNextIcon />
+                    <NavigateNextIcon size="large" />
                 </IconButton>
             </form>
         </>
