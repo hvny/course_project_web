@@ -7,8 +7,6 @@ export default function Cart({handleClose}) {
 
     const [items, setItems] = useState([]);
 
-
-    
     return (
         <section className="cart">
             <h2 className="cart__title">Корзина</h2>

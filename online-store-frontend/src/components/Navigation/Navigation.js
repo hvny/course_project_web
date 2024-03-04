@@ -89,7 +89,6 @@ function Navigation(props) {
                     <a href="https://www.hlebnitca.ru/about" target="__blank" className="link header__link">О нас</a>
                 </li>
             </ul>
-            
         </nav>
     );
 }

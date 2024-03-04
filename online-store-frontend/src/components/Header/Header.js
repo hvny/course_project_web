@@ -45,32 +45,32 @@ function Header(props) {
             <div className="header__container">
                 <Link to="/" className="header__logo-link"><img src={logo} className="header__logo" alt="Логотип компании"/></Link>
                 <Navigation />
-                    <div className="header__phone-container">
-                        <LocalPhoneIcon size="large" />
-                        <p className="header__phone-number">8 800 770-71-18</p>    
-                    </div>
-                    <div className="header__buttons">
-                        <IconButton aria-label="ShoppingBagOutlined" size="large" className="header__button_cart" style={{backgroundColor: "#ffffff", marginRight: "20px"}} onClick={handleCartClick}>
-                            <ShoppingBagOutlinedIcon className="header__icon_cart" size="large" />
-                        </IconButton>
-                        <Drawer open={isCartOpen} onClose={handleCartClick} anchor="right">
-                            <Cart handleClose={handleCartClick}  />
-                        </Drawer>
-                        <IconButton aria-label="Login" size="large" className="header__button_login" style={{borderRadius: "15px", backgroundColor: "#663334", padding: "4px 5px"}} onClick={handleSigninButtonClick}>
-                            <span className="header__span">Войти</span>
-                            <LoginIcon className="header__icon_login" />
-                        </IconButton>
-                        <Modal
-                            open={isModalOpen}
-                            onClose={handleSigninButtonClick}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={style}>
-                                <Signin />
-                            </Box>
-                        </Modal>
-                    </div>
+                <div className="header__phone-container">
+                    <LocalPhoneIcon size="large" />
+                    <p className="header__phone-number">8 800 770-71-18</p>    
+                </div>
+                <div className="header__buttons">
+                    <IconButton aria-label="ShoppingBagOutlined" size="large" className="header__button_cart" style={{backgroundColor: "#ffffff", marginRight: "20px"}} onClick={handleCartClick}>
+                        <ShoppingBagOutlinedIcon className="header__icon_cart" size="large" />
+                    </IconButton>
+                    <Drawer open={isCartOpen} onClose={handleCartClick} anchor="right">
+                        <Cart handleClose={handleCartClick}  />
+                    </Drawer>
+                    <IconButton aria-label="Login" size="large" className="header__button_login" style={{borderRadius: "15px", backgroundColor: "#663334", padding: "4px 5px"}} onClick={handleSigninButtonClick}>
+                        <span className="header__span">Войти</span>
+                        <LoginIcon className="header__icon_login" />
+                    </IconButton>
+                    <Modal
+                        open={isModalOpen}
+                        onClose={handleSigninButtonClick}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Signin />
+                        </Box>
+                    </Modal>
+                </div>
             </div>
         </header>
     );
