@@ -9,6 +9,7 @@ import { MenuItem as BaseMenuItem } from '@mui/base/MenuItem';
 import { styled } from '@mui/system';
 import { CssTransition } from '@mui/base/Transitions'
 
+
 function Navigation(props) {
     const location = useLocation();
     const MenuItem = styled(BaseMenuItem)(({ theme }) => ``,);
@@ -69,7 +70,7 @@ function Navigation(props) {
       });
   
     return (
-        <nav class="header__navigation">
+        <nav className="header__navigation">
             <ul className="header__navigation-list">
                 <li className="header__navigation-list-item">
                     <Dropdown>
@@ -86,7 +87,7 @@ function Navigation(props) {
                     <NavLink to="/events" className={`link header__link ${location.pathname === "/events" ? "header__link_active" : ""}`}>Акции</NavLink>
                 </li>
                 <li className="header__navigation-list-item">
-                    <a href="https://www.hlebnitca.ru/about" target="__blank" className="link header__link">О нас</a>
+                    <NavLink to="/about-delivery" className={`link header__link ${location.pathname === "/about-delivery" ? "header__link_active" : ""}`}>Доставка</NavLink>
                 </li>
             </ul>
         </nav>
@@ -94,3 +95,5 @@ function Navigation(props) {
 }
 
 export default Navigation;
+
+{/* <a href="https://www.hlebnitca.ru/about" target="__blank" className="link header__link">О нас</a> */}
