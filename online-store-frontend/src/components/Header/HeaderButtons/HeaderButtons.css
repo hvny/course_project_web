@@ -1,0 +1,53 @@
+.header__buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header__buttons_visible {
+    display: block;
+}
+
+.header__buttons_hidden {
+    display: none;
+}
+
+.header__button_menu {
+    visibility: hidden;
+}
+
+.header__button_cart {
+    background-color: #663334;
+}
+
+.header__icon_cart {
+    color: #663334;
+}
+
+.header__button_profile {
+    padding: 10px 15px;
+    background-color: #663334;
+    border-radius: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 1023px)  {
+    .header__content > .header__buttons{
+       display: none;
+    }
+    
+    .header__button_menu {
+        visibility: visible;
+    }
+
+    .header__buttons {
+        flex-direction: column;
+    }
+
+    .header__button_cart {
+        order: 2;
+    }
+
+}

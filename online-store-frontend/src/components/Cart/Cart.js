@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import "./Cart.css";
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
+import "./Cart.css";
+    
 
 export default function Cart({handleClose}) {
 
@@ -9,6 +12,9 @@ export default function Cart({handleClose}) {
 
     return (
         <section className="cart">
+            <button onClick={handleClose} className="cart__button_close link">
+                <CloseIcon />
+            </button>
             <h2 className="cart__title">Корзина</h2>
             {
                 items.length === 0 ?

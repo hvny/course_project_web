@@ -4,6 +4,8 @@ import { Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import Cart from "../../Cart/Cart";
 
+import "./HeaderButtons.css";
+
 export default function HeaderButtons({isCartOpen, handleCartClick, additionalClassName}) {
     return (
         <div className={`header__buttons ${additionalClassName}`}>

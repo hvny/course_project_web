@@ -1,9 +1,11 @@
 .cart {
     width: 400px;
     height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 40px 0 0 0;
     background-color: #FCE6C6;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
@@ -35,4 +37,23 @@
     line-height: 1.5;
     color: #F6B221;
     /* color: #1976d2; */
+}
+
+.cart__button_close {
+    width: 30px;
+    height: 30px;
+    padding: 0;;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #663334;
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+    .cart {
+        width: 100vw;
+    }
+    
 }
