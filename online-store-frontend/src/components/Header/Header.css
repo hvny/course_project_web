@@ -9,7 +9,7 @@
     width: 80%;
     margin: 0 auto 0 auto;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between; 
 }
 
 .header__logo {
@@ -39,7 +39,7 @@
     margin: 0;
 }
 
-.header__buttons-menu {
+.header__button_menu {
     display: none;
 }
 
@@ -76,19 +76,16 @@
     .header__phone-container {
         display: none
     }
-
-    .header__buttons-menu {
-        display: block;
-    }
-    .header__container {
-        justify-content: space-between;
-    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px)  {
     .header__logo {
         width: 73px;
         height: 52px;
+    }
+
+    .header__button_menu {
+        display: block;
     }
    
     .header__phone-number {

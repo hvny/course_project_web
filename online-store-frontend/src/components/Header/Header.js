@@ -64,9 +64,9 @@ function Header(props) {
                     <MenuItem className="header__menu-item"><Navigation /></MenuItem>
                     <MenuItem className="header__menu-item"><HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} /></MenuItem>
                 </Menu> */}
-                <IconButton aria-label="Menu" className="header__button_menu" onClick={handleMenulick}>
+                <button aria-label="Menu" className="header__button_menu" onClick={handleMenulick}>
                     <MenuIcon />
-                </IconButton>
+                </button>
             </div>
             
         </header>
