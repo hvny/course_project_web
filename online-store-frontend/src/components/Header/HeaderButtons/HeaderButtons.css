@@ -32,12 +32,20 @@
     font-size: 20px;
 }
 
-
-@media screen and (min-width: 320px) and (max-width: 767px)  {
-    .header__content > .header__buttons{
-       display: none;
+@media screen and (min-width: 768px) and (max-width: 1150px)  {
+    .header__button_profile {
+        padding: 8px 12px;
+        font-size: 18px;
     }
-    
+
+    .header__button_cart {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px)  {    
     .header__button_menu {
         visibility: visible;
     }
@@ -49,4 +57,13 @@
     .header__button_cart {
         order: 2;
     }
+<<<<<<< HEAD
+=======
+
+    .header__button_profile {
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+
+>>>>>>> 77472c476eb7e2063fe2623d86ffc64f83130474
 }

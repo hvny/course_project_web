@@ -10,18 +10,27 @@
     margin: 0 auto 0 auto;
     display: flex;
     justify-content: space-between; 
+    align-items: center;
+    position: relative;
+}
+
+.header__logo-link {
+    margin: 0 100px 0 0;
 }
 
 .header__logo {
     width: 103px;
     height: 74px;
-    margin: 0 100px 0 0;
 }
 
 .header__content {
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: space-between;
+}
+
+.header__content_visible {
+    display: block;
 }
 
 .header__phone-container {
@@ -39,8 +48,22 @@
     margin: 0;
 }
 
+.header__icon_menu {
+    color: #ffffff;
+}
+
 .header__button_menu {
     display: none;
+}
+
+.header__popover {
+    visibility: hidden;
+}
+
+.header__popover-content {
+    width: 130px;
+    padding: 15px 0 0 0;
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 1150px)  {
@@ -59,17 +82,6 @@
     .header__phone-number {
         font-size: 18px;
     }
-
-    .header__button_profile {
-        padding: 8px 12px;
-        font-size: 18px;
-    }
-
-    .header__button_cart {
-        width: 36px;
-        height: 36px;
-        padding: 0;
-    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1023px)  {
@@ -79,6 +91,10 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px)  {
+    .header__logo-link {
+        margin: 0;
+    }
+
     .header__logo {
         width: 73px;
         height: 52px;
@@ -90,6 +106,17 @@
    
     .header__phone-number {
         font-size: 15px;
+    }
+
+    .header__content {
+        position: absolute;
+        display: none;
+        right: 0px;
+        top: 0;
+    }
+
+    .header__popover {
+        visibility: visible;
     }
 
 }
