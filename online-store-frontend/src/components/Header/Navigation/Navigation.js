@@ -8,7 +8,6 @@ import { styled } from '@mui/system';
 import { MenuButton, AnimatedListbox } from '../../../utils/constants/navigationConstants';
 import "./Navigation.css";
 
-
 function Navigation({handlePopoverClose}) {
     const location = useLocation();
     const MenuItem = styled(BaseMenuItem)(({ theme }) => ``,);
@@ -19,7 +18,7 @@ function Navigation({handlePopoverClose}) {
             <ul className="header__navigation-list">
                 <li className="header__navigation-list-item header__navigation-list-item_menu">
                     <Dropdown>
-                        <MenuButton className={`link header__link ${location.pathname === "/" ? "header__link_active" : ""}`}>Меню</MenuButton>
+                        <MenuButton><span className={`link header__link ${location.pathname === "/" ? "header__link_active" : ""}`}>Меню</span></MenuButton>
                         <Menu slots={{ listbox: AnimatedListbox }} className='header__dropdown-menu'>
                             <MenuItem className="header__menu-item"><HashLink to="/#bakery-products" className="link header__menu-link">Выпечка</HashLink></MenuItem>
                             <MenuItem className="header__me nu-item"><HashLink to="/#desserts" className="link header__menu-link">Десерты</HashLink></MenuItem>

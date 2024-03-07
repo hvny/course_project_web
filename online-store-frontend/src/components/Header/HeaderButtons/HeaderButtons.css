@@ -57,13 +57,10 @@
     .header__button_cart {
         order: 2;
     }
-<<<<<<< HEAD
-=======
 
     .header__button_profile {
         padding: 4px 8px;
         font-size: 13px;
     }
 
->>>>>>> 77472c476eb7e2063fe2623d86ffc64f83130474
 }

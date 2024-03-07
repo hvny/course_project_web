@@ -6,11 +6,22 @@ import Cart from "../../Cart/Cart";
 
 import "./HeaderButtons.css";
 
-export default function HeaderButtons({isCartOpen, handleCartClick}) {
-
+export default function HeaderButtons({ isCartOpen, handleCartClick }) {
+    // function handleClick() {
+    //     // handlePopoverClose();
+    //     handleCartClick();
+    // } 
+    // onClick={handlePopoverClose instanceof Function ? handleClick : handleCartClick}
+    
     return (
         <div className={`header__buttons`}>
-            <IconButton aria-label="ShoppingBagOutlined" size="large" className="header__button_cart" style={{backgroundColor: "#ffffff", marginRight: "20px"}} onClick={handleCartClick}>
+            <IconButton 
+                aria-label="ShoppingBagOutlined" 
+                size="large"
+                className="header__button_cart"
+                style={{backgroundColor: "#ffffff", marginRight: "20px"}}
+                onClick={handleCartClick}
+            >
                 <ShoppingBagOutlinedIcon className="header__icon_cart"  />
             </IconButton>
             <Drawer open={isCartOpen} onClose={handleCartClick} anchor="right">

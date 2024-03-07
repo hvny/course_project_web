@@ -1,7 +1,8 @@
 
+
 export default function Events() {
     return (
-        <main>
+        <main className="events">
             EVENTS
         </main>
     )

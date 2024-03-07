@@ -26,13 +26,6 @@ function Header(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
-        
-
-
-    // function handleMenulick() {
-    //     setIsMenuListActive(!isMenuListActive);
-    // } 
 
     function handleCartClick() {
         setIsCartOpen(!isCartOpen);
@@ -56,10 +49,18 @@ function Header(props) {
                     <IconButton aria-describedby={id} aria-label="Menu" onClick={handleClick}>
                         <MenuIcon className="header__icon_menu" />
                     </IconButton>
-                </div>
-                <Popover id={id} open={open} anchorEl={anchorEl} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left',}} className="header__popover">
+                </div>  
+                <Popover 
+                    id={id} 
+                    open={open} 
+                    anchorEl={anchorEl} 
+                    onClose={handleClose}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left',}} 
+                    className="header__popover"
+                    style={{zIndex: "10"}}
+                >
                     <div className="header__popover-content">
-                        <Navigation />  
+                        <Navigation handlePopoverClose={handleClose} />  
                         <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} />
                     </div>
                 </Popover>

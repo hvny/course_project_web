@@ -16,26 +16,25 @@
     display: none;
 }
 
-.header__dropdown-menu {
-    z-index: 20;
-}
-
 .header__menu-item {
     padding: 8px 15px;
 }
 
 .header__link {
+    display: inline-block;
     color: #ffffff;
     font-size: 20px;
     padding: 0;
     text-decoration: none;
+    padding: 2px 5px;
+
 }
 
-/* .header__link_active {
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-} */
+.header__link_active {
+    background-color: rgba(103, 103, 103, 0.3);
+    border-radius: 5px;
 
-
+} 
 
 .header__menu-link {   
     font-family: "Roboto","Helvetica","Arial",sans-serif;
