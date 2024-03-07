@@ -1,7 +1,7 @@
 export default function Delivery() {
     return (
-        <section className="delivery">
+        <main className="delivery">
             Delivery
-        </section>
+        </main>
     );
 }
