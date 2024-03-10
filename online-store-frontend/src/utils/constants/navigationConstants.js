@@ -1,9 +1,11 @@
 import { MenuButton as BaseMenuButton } from '@mui/base/MenuButton';
+import { MenuItem as BaseMenuItem } from '@mui/base/MenuItem';
 import { styled } from '@mui/system';
 import { forwardRef, useContext } from 'react';
 import { PopupContext } from '@mui/base/Unstable_Popup';
 import { CssTransition } from '@mui/base/Transitions'
 
+export const MenuItem = styled(BaseMenuItem)(({ theme }) => ``,);
 
 export const MenuButton = styled(BaseMenuButton)(
     ({ theme }) => `
@@ -17,11 +19,15 @@ export const MenuButton = styled(BaseMenuButton)(
 export const Listbox = styled('ul')(
     ({ theme }) => `
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     padding: 6px;
     border-radius: 12px;
     z-index: 20;
     background-color: #ffffff;
-    text-align: center;
+     
   
     .closed & {
         opacity: 0;

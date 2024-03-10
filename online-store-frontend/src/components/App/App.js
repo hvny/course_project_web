@@ -5,7 +5,7 @@ import Events from "../Events/Events";
 import Order from "../Order/Order";
 import Delivery from "../Delivery/Delivery";
 import Footer from "../Footer/Footer";
-
+import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation";
 import "../Link/Link.css"
 import "./App.css";
 
@@ -20,7 +20,6 @@ export default function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/about-delivery" element={<Delivery />} />
       </Routes>
-
       <Footer />
     </div>
   );

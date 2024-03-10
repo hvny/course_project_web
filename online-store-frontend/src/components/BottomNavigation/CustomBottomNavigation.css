@@ -1,0 +1,28 @@
+.bottom-nav {
+    width: 100vw;
+    display: none;
+    position: sticky;
+    bottom: 0;
+}
+
+.bottom-nav_content {
+    width: 100%;
+    background-color: #e3b759;
+}
+
+.bottom-nav__icon {
+    color: #ffffff;
+}
+
+.bottom-nav__text span {
+    color: #ffffff;
+}
+
+
+
+
+@media screen and (min-width: 320px) and (max-width: 767px)  {
+    .bottom-nav {
+        display: inline;
+    }
+}

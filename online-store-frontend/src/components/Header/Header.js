@@ -57,7 +57,7 @@ function Header(props) {
                     onClose={handleClose}
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'left',}} 
                     className="header__popover"
-                    style={{zIndex: "10"}}
+                    style={{zIndex: "1000"}}
                 >
                     <div className="header__popover-content">
                         <Navigation handlePopoverClose={handleClose} />  
