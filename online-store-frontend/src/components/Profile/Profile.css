@@ -1,0 +1,18 @@
+/* .profile {
+    width: 80%;
+    max-width: 1150px;
+} */
+
+.profile {
+    padding: 0;
+    border: 1px solid red;
+}
+
+.profile__title {
+    width: min-content;
+    margin: 0 auto;
+}
+
+.profile__form {
+}
+

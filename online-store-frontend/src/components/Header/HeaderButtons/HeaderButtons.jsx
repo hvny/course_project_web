@@ -27,7 +27,7 @@ export default function HeaderButtons({ isCartOpen, handleCartClick }) {
             <Drawer open={isCartOpen} onClose={handleCartClick} anchor="right">
                 <Cart handleClose={handleCartClick}  />
             </Drawer>
-            <Link className="header__button_profile">Профиль</Link>
+            <Link className="header__button_profile" to="/profile">Профиль</Link>
         </div>
     )
 }
