@@ -16,3 +16,6 @@
 .profile__form {
 }
 
+.profile__input {
+    border: 1px solid #663334;
+}

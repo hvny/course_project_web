@@ -11,9 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    {/* <StyledEngineProvider injectFirst> */}
+    <StyledEngineProvider injectFirst>
       <App />
-    {/* </StyledEngineProvider> */}
+    </StyledEngineProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
