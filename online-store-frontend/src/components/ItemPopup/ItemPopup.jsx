@@ -5,7 +5,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 import "./ItemPopup.css";
 
-export default function ItemPopup({itemTitle, itemInfo, itemId, itemImage}) {
+export default function ItemPopup({item}) {
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [itemQuantity, setItemQuantity] = useState(0);
 
@@ -29,13 +29,13 @@ export default function ItemPopup({itemTitle, itemInfo, itemId, itemImage}) {
     return (
         <div className="item-info">
             <div className="item-info__main">
-                <h2 className="item-info__title">{itemTitle}</h2>
-                <img src={itemImage} alt={`Товар '${itemTitle}'`} className="item-info__image" />
+                <h2 className="item-info__title">{item.title}</h2>
+                <img src={item.image} alt={item.title} className="item-info__image" />
             </div>
             <div className="item-info__about">
                 <p className="item-info__composition">test</p>
                 <p className="item-info__calories">test2</p>
-                {itemInfo}
+                {/* {itemInfo} */}
             </div>
 {/* {itemInfo["composition"]} {itemInfo["calories"]}*/}
             {

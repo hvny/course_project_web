@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.items:last-child {
+    margin-bottom: 50px;
+}
+
 /* .items__title {
     margin: 0;
     color: #663334;
