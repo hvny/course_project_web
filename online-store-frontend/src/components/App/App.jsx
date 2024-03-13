@@ -16,13 +16,16 @@ import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation";
 
 
 export default function App() {
+  
+  const eventsArr = [];
+
   return (
     <div className="page">
       <Header />
       <main className="main">
         <Routes>
           <Route path="/" element={<Items />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/events" element={<Events eventsArr={eventsArr} />} />
           <Route path="/order" element={<Order />} />
           <Route path="/about-delivery" element={<Delivery />} />
           <Route path="/profile" element={<Profile />} />
