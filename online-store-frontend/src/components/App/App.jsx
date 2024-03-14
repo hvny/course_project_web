@@ -40,7 +40,7 @@ export default function App() {
       image: PragueImg,
     },
     {
-      title: "Пирожное `Картошка`",
+      title: "Пирожное «Картошка»",
       image: potatoImg,
     }
   ];

@@ -54,7 +54,7 @@ export default function ItemCard({item}) {
                 aria-describedby="modal-modal-description"
             >
                 <Box className="card__popup">
-                    <ItemPopup item={item} />
+                    <ItemPopup item={item} handleClose={handleCardClick} />
                 </Box>
             </Modal>
             <CardActions>
