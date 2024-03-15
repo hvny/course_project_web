@@ -18,6 +18,7 @@ export default function CardsContainer({containerTitle, sectionId, cardItems}) {
                     cardItems.map((item, key) => (
                         <ItemCard 
                             item={item}
+                            key={item.title}
                         />
                     ))
                     :

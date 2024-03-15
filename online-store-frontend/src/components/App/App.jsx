@@ -29,7 +29,7 @@ export default function App() {
       image: hachapuriImg,
     },
   ];
-  console.log("test: ", bakeryItems);
+
   const dessertsItems = [
     {
       title: "Медовик",

@@ -4,6 +4,10 @@
     /* height: 270px; */
 }
 
+.card__content {
+    min-height: 40px;
+}
+
 .card__popup {
     width: 700px;
     height: auto;
@@ -15,6 +19,45 @@
     border-radius: 20px;
     box-sizing: border-box;
 }
+
+.card__title {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    color: #663334;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+}
+
+.card__actions {
+    position: relative;
+    height: 20px;
+    padding-left: 16px;
+    margin-bottom: 10px;
+}
+
+.card__button_add {
+    position: absolute;
+    bottom: 5px;
+    border-color: #F6B221;
+    color: #F6B221;
+}
+
+.card__button_add:hover {
+    background-color: transparent;
+    border-color: #f5d287;
+    color: #f5d287;
+}
+
+/* .card__button_add:focus {
+    background-color: red;
+
+}
+
+.card__button_add:active {
+    background-color: red;
+
+} */
 /* 
 @media screen and (min-width: 1280px)  {
     .card {
