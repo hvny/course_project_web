@@ -69,7 +69,9 @@ export default function Profile() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <AddressForm />
+            <Box>
+              <AddressForm />
+            </Box>
           </Modal>
         </div>
       </div>

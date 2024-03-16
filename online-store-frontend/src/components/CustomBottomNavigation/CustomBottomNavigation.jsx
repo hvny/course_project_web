@@ -15,8 +15,8 @@ import EventIcon from '@mui/icons-material/Event';
 
 
 export default function CustomBottomNavigation({currentLocation}) {
-    const location = useLocation().pathname;
-    const [currentTarget, setCurrentTarget] = useState(useLocation().pathname   );
+    const location = useLocation();
+    const [currentTarget, setCurrentTarget] = useState(location.pathname);
     console.log(currentTarget)
 
     useEffect(() => {
