@@ -1,4 +1,4 @@
-import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation";
+import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation";
 
 export default function Order() {
     return (

@@ -1,5 +1,4 @@
 import CardsContainer from "../CardsContainer/CardsContainer"
-import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation";
 import "./Items.css";
 
 export default function Items({bakeryItems, dessertsItems, drinksItems}) {
@@ -21,7 +20,6 @@ export default function Items({bakeryItems, dessertsItems, drinksItems}) {
                 sectionId="drinks" 
                 cardItems={drinksItems}
             />
-            <CustomBottomNavigation />
         </section>
     );
 }

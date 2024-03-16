@@ -73,9 +73,6 @@ export default function Profile() {
           </Modal>
         </div>
       </div>
-        
-
-        
     </section>
   );
 }

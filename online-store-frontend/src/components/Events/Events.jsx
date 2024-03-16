@@ -1,6 +1,6 @@
 import "./Events.css"
 
-import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation"
+import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation"
 
 export default function Events(eventsArr) {
     return (
@@ -14,9 +14,6 @@ export default function Events(eventsArr) {
                     <h2 className="events__subtitle">В данный момент акции не  проводятся</h2>
                 </div>
             }
-
-            <CustomBottomNavigation />
-
         </section>
     )
 }

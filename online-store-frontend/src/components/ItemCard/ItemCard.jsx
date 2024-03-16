@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions, IconButton } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import ItemPopup from '../ItemPopup/ItemPopup';
+import ItemPopup from './ItemPopup/ItemPopup';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { StyledEngineProvider } from '@mui/material/styles';
