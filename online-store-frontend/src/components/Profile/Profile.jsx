@@ -6,7 +6,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 
 export default function Profile() {
   const schema = [];
-  const {register, hendleSubmit, formState: {errors, isValid, isDirty}} = useForm({
+  const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
     resolver:  joiResolver(schema),
     defaultValues: {
       firstName: "",
