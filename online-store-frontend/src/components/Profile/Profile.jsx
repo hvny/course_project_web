@@ -15,8 +15,6 @@ import AddressForm from "./AddressForm/AddressForm.tsx";
 
 export default function Profile() {
   const schema = [];
-  const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
-    resolver:  joiResolver(schema),
   const [isPopupOpen, setIsPopupOpen] = useState(false);      //попап добавления адреса
 
   const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
