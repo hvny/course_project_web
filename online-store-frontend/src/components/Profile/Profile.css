@@ -5,15 +5,35 @@
 
 .profile {
     padding: 0;
-    border: 1px solid red;
 }
 
 .profile__title {
     width: min-content;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
 }
 
+.profile__subtitle {
+    color: #663334;
+}
+
+.profile__content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile__container {
+    border: 3px solid #663334;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+
 .profile__form {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
 }
 
 .profile__input {
@@ -22,4 +42,26 @@
 
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #ffffff;
+}
+
+.profile__address-container {
+    width: 500px;
+    text-align: center;
+}
+
+.profile__button_add-address {
+    position: relative;
+    bottom: 5px;
+    left: 0;
+
+}
+
+.profile__form_add-address {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
 }

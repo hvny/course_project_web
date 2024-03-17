@@ -1,11 +1,19 @@
-import CustomBottomNavigation from "../BottomNavigation/CustomBottomNavigation"
+import "./Events.css"
 
-export default function Events() {
+import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation"
+
+export default function Events(eventsArr) {
     return (
         <section className="events">
-            EVENTS
-            <CustomBottomNavigation />
-
+            <h1 className="events__title title">Акции</h1>
+            {
+                eventsArr.length > 0 ? 
+                <></>
+                :
+                <div className="events__subtitle-container">
+                    <h2 className="events__subtitle">В данный момент акции не  проводятся</h2>
+                </div>
+            }
         </section>
     )
 }

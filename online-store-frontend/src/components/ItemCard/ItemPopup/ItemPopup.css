@@ -1,0 +1,156 @@
+.item-info {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    box-sizing: border-box;
+    color: #663334;
+    padding-top: 15px;
+}
+
+.item-info__container {
+    padding: 0 30px 15px 30px;
+    position: relative;
+    display: flex;
+    column-gap: 30px;
+}
+
+.item-info__main {
+    text-align: center;
+}
+
+.item-info__title {
+    color: #f6b221;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0 0 15px 0;
+}
+
+.item-info__image {
+    width: 340px;
+    height: 340px;
+    box-shadow:  0 0 1px 1px #663334;
+    border-radius: 20px;
+    
+}
+
+.item-info__about {
+    max-width: 270px;
+    position: relative;
+    margin-top: 10px; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-info__subtitle {
+    margin: 0 0 10px 0;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.item-info__composition {
+    font-size: 15px
+}
+
+.item-info__paragraph {
+    margin: 0;
+}
+
+.item-info__button_add {
+    width: 100px;
+    height: 30px;
+    background-color: #F6B221;
+}
+
+.item-info__button_add:hover {
+    background-color: #F6B221;
+}
+
+.item-info__button_icon {
+    padding: 0;
+}
+
+.item-info__quantity {
+    margin: 0 10px;
+}
+
+.item-info__button_close {
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    right: 10px;
+}
+
+
+
+@media screen and (min-width: 650px) and (max-width: 1024px) {
+    .item-info__title {
+        font-size: 25px;
+        line-height: 1;
+        margin: 0 0 15px 0;
+    }
+
+    .item-info__image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .item-info__subtitle {
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+
+    .item-info__composition {
+        font-size: 12px
+    }
+
+    .item-info__button_add {
+        width: 90px;
+        height: 25px;
+        font-size: 12px;
+        
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 649px) {
+    .item-info__container{
+        flex-direction: column;
+        padding: 0 15px 15px 15px;
+    }
+
+    .item-info__title {
+        font-size: 20px;
+    }
+
+    .item-info__image {
+        width: 100%;
+        max-height: 250px;
+    }
+
+    .item-info__composition-container {
+        margin-bottom: 20px;
+    }
+
+    .item-info__subtitle {
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+
+    .item-info__composition {
+        font-size: 12px
+    }
+
+    .item-info__button_add {
+        width: 90px;
+        height: 24px;
+        font-size: 12px;
+        
+    }
+
+    .item-info__button_close {
+        top: 5px;
+        right: 5px;
+    }
+}
