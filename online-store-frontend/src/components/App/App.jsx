@@ -5,7 +5,6 @@ import "../Title/Title.css";
 
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 import Header from "../Header/Header";
 import Items from "../Items/Items";
@@ -25,11 +24,6 @@ import milkshakeImg from "../../images/milkshake.jpg";
 import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/test";
 
 export default function App() {
-  const location = useLocation().pathname;
-  const [currentLocation, setCurrentLocation] = useState(location);
-
-  console.log("location: ", location)
-
   const [itemsArr, setItemsArr] = useState([]);
   
 
@@ -92,7 +86,7 @@ export default function App() {
 
         </Routes>
       </main>
-      <CustomBottomNavigation currentLocation={currentLocation} />
+      <CustomBottomNavigation />
       <Footer />
     </div>
   );

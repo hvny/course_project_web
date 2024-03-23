@@ -12,50 +12,60 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import EventIcon from '@mui/icons-material/Event';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { Button, IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
-export default function CustomBottomNavigation({currentLocation}) {
+export default function CustomBottomNavigation() {
     const location = useLocation();
     const [currentTarget, setCurrentTarget] = useState(location.pathname);
-
     return (
         <div className="bottom-nav">
-            <StyledEngineProvider injectFirst>
+            <StyledEngineProvider injectFirst >
                 <BottomNavigation 
-                    sx={{ width: 500 }} 
                     value={currentTarget} 
-                    onChange={(event, newValue) => {
-                        setCurrentTarget(newValue)
-                    }} 
                     className="bottom-nav_content"
                 >
                     <BottomNavigationAction
                         label="Меню"
                         value={currentTarget}
-                        icon={<FastfoodIcon  className="bottom-nav__icon" />}
-                        href="/"
-                        className={`bottom-nav__text `}
+                        icon={
+                            <Link to="/">
+                                <FastfoodIcon  className="bottom-nav__icon" />
+                            </Link>
+                        }
+                        className={`bottom-nav__text ${location.pathname === "/" ? "bottom-nav__text_current": ""} `}
                     />
+                    
                     <BottomNavigationAction
                         label="Акции"
                         value={currentTarget}
-                        icon={<EventIcon className="bottom-nav__icon" />}
-                        href="/events"
-                        className="bottom-nav__text"
+                        icon={
+                            <Link to="/events">
+                                <EventIcon className="bottom-nav__icon" />
+                            </Link>
+                        }
+                        className={`bottom-nav__text ${location.pathname === "/events" ? "bottom-nav__text_current": ""} `}
                     />
                     <BottomNavigationAction
                         label="Доставка"
                         value={currentTarget}
-                        icon={<LocalShippingIcon className="bottom-nav__icon" />}
-                        href="/delivery"
-                        className="bottom-nav__text"
+                        icon={
+                            <Link to="about-delivery">
+                                <LocalShippingIcon className="bottom-nav__icon" />
+                            </Link>
+                        }
+                        className={`bottom-nav__text ${location.pathname === "/about-delivery" ? "bottom-nav__text_current": ""} `}
                     />
                     <BottomNavigationAction
                         label="Профиль"
                         value={currentTarget}
-                        icon={<PersonOutlineIcon className="bottom-nav__icon" />}
-                        href="/profile" 
-                        className="bottom-nav__text"
+                        icon={
+                            <Link to="/profile">
+                                <PersonOutlineIcon className="bottom-nav__icon" />
+                            </Link>
+                        }
+                        className={`bottom-nav__text ${location.pathname === "/profile" ? "bottom-nav__text_current": ""} `}
                     />
                 </BottomNavigation>
             </StyledEngineProvider>
