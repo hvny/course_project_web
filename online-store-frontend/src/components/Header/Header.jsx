@@ -44,8 +44,8 @@ function Header(props) {
                     </div>
                     <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick}  />
                 </div>
-
-                <div className="header__button_menu">
+                
+                {/* <div className="header__button_menu">
                     <IconButton aria-describedby={id} aria-label="Menu" onClick={handleClick}>
                         <MenuIcon className="header__icon_menu" />
                     </IconButton>
@@ -63,7 +63,7 @@ function Header(props) {
                         <Navigation handlePopoverClose={handleClose} />  
                         <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} />
                     </div>
-                </Popover>
+                </Popover> */}
             </div>
         </header>
     );
