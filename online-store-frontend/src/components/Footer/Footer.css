@@ -2,5 +2,25 @@
     width: 100%;
     height: 100px;
     background-color: #663334;
+    color: #FCE6C6;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
 
+.footer__container {
+    width: 80%;
+}
+
+.footer__figure {
+    margin: 0;
+}
+
+.footer__subtitle {
+    font-size: 20px;
+}
+
+.footer__list{
+    list-style: none;
+    padding: 0;
 }
