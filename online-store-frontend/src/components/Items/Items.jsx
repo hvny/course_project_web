@@ -1,5 +1,5 @@
-import CardsContainer from "../CardsContainer/CardsContainer"
 import "./Items.css";
+import CardsContainer from "../CardsContainer/CardsContainer"
 
 export default function Items({bakeryItems, dessertsItems, drinksItems}) {
     return (

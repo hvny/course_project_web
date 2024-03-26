@@ -1,7 +1,5 @@
 import "./Events.css"
 
-import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation"
-
 export default function Events(eventsArr) {
     return (
         <section className="events">

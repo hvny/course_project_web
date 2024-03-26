@@ -3,20 +3,19 @@
     align-items: center;
 }
 
-.header__buttons_visible {
-    display: block;
-}
-
-.header__buttons_hidden {
-    display: none;
-}
-
 .header__button_menu {
     visibility: hidden;
 }
 
 .header__button_cart {
-    background-color: #663334;
+    background-color: #ffffff; 
+    margin-right: 20px;
+    box-sizing: border-box;
+    transition: background-color .3s ease;
+}
+
+.header__button_cart:hover {
+    background-color: #f5f5f5;
 }
 
 .header__icon_cart {
@@ -46,21 +45,14 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px)  {    
-    .header__button_menu {
-        visibility: visible;
-    }
-
-    .header__buttons {
-        flex-direction: column;
-    }
-
     .header__button_cart {
-        order: 2;
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 0;
     }
 
     .header__button_profile {
-        padding: 4px 8px;
-        font-size: 13px;
+        display: none;
     }
-
 }

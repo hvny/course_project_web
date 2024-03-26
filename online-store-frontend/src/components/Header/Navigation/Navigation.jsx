@@ -1,11 +1,11 @@
+import "./Navigation.css";
+
 import { NavLink, useLocation} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Dropdown } from '@mui/base/Dropdown';
 import { Menu } from '@mui/base/Menu';
-import { styled } from '@mui/system';
 
 import { MenuButton, AnimatedListbox, MenuItem } from '../../../utils/constants/navigationConstants';
-import "./Navigation.css";
 
 function Navigation({handlePopoverClose}) {
     const location = useLocation();
@@ -24,21 +24,6 @@ function Navigation({handlePopoverClose}) {
                     </Dropdown>
                     
                 </li>
-
-                <li className="header__navigation-list-item  header__navigation-list-item_menu header__navigation-list-item_menu_min-width">
-                    <ul className = "header__navigation-menu-list">
-                        <li className="header__navigation-list-item">
-                            <HashLink to="/#bakery-products" className="link header__menu-link" onClick={handlePopoverClose}>Выпечка</HashLink>
-                        </li>
-                        <li className="header__navigation-list-item">
-                            <HashLink to="/#desserts" className="link header__menu-link" onClick={handlePopoverClose}>Десерты</HashLink>
-                        </li>
-                        <li className="header__navigation-list-item">
-                            <HashLink to="/#drinks" className="link header__menu-link" onClick={handlePopoverClose}>Напитки</HashLink>
-                        </li>
-                    </ul>
-                </li>
-                
 
                 <li className="header__navigation-list-item">
                     <NavLink to="/events" onClick={handlePopoverClose} className={`link header__link ${location.pathname === "/events" ? "header__link_active" : ""}`}>Акции</NavLink>

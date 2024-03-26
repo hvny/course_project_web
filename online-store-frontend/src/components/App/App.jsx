@@ -25,8 +25,6 @@ import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/te
 
 export default function App() {
   const [itemsArr, setItemsArr] = useState([]);
-  
-
   const bakeryItems = [
     {
       title: "Хачапури",
@@ -86,7 +84,7 @@ export default function App() {
 
         </Routes>
       </main>
-      <CustomBottomNavigation />
+      <CustomBottomNavigation />  
       <Footer />
     </div>
   );
