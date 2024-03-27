@@ -2,6 +2,8 @@ import "./HeaderButtons.css";
 
 import { IconButton, StyledEngineProvider } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+
 import { Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import Cart from "../../Cart/Cart";
@@ -13,11 +15,13 @@ export default function HeaderButtons({ isCartOpen, handleCartClick }) {
         <StyledEngineProvider injectFirst>
             <div className="header__buttons">
                 <IconButton 
-                    aria-label="ShoppingBagOutlined" 
-                    className="header__button_cart"
+                    // aria-label="ShoppingBagOutlined" 
+                    aria-label="Корзина"
+                    className="header__button header__button_cart"
                     onClick={handleCartClick}
+                    title="Корзина"
                 >
-                    <ShoppingBagOutlinedIcon className="header__icon_cart"  />
+                    <ShoppingBagOutlinedIcon className="header__icon_cart" />
                 </IconButton>
                 <Drawer 
                     open={isCartOpen}
@@ -26,7 +30,14 @@ export default function HeaderButtons({ isCartOpen, handleCartClick }) {
                 >
                     <Cart handleClose={handleCartClick} />
                 </Drawer>
-                <Link className="header__button_profile" to="/profile">Профиль</Link>
+                <Link 
+                    aria-label="Прфиль"
+                    className="header__button header__button_profile" 
+                    to="/profile"
+                    title="Профиль"
+                >
+                    <PersonOutlineIcon />
+                </Link>
             </div>
         </StyledEngineProvider>
     )

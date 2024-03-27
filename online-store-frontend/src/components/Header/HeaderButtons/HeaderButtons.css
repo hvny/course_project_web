@@ -7,11 +7,16 @@
     visibility: hidden;
 }
 
+.header__button {
+    width: 36px;
+    height: 36px;
+    box-sizing: border-box;
+    transition: background-color .3s ease;
+}
+
 .header__button_cart {
     background-color: #ffffff; 
     margin-right: 20px;
-    box-sizing: border-box;
-    transition: background-color .3s ease;
 }
 
 .header__button_cart:hover {
@@ -23,12 +28,16 @@
 }
 
 .header__button_profile {
-    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #663334;
     border-radius: 20px;
     color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
+}
+
+.header__button_profile:hover {
+    background-color: #8d484a;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1150px)  {
