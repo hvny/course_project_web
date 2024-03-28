@@ -44,7 +44,15 @@ export default function ItemPopup({item, handleClose, itemsQuantity, handleIncre
                         </div>
                         {
                             itemsQuantity === 0 ? 
-                            <Button variant="contained" onClick={handleAddButtonClick} className="item-info__button_add">Добавить</Button>
+                            <Button 
+                                variant="contained" 
+                                onClick={handleAddButtonClick} 
+                                className="item-info__button_add"
+                                title="Добавить в корзину"
+                                aria-label="Добавить в корзину"
+                            >
+                                Добавить
+                            </Button>
                             :
                             <div className="item-info__buttons">
                                 <IconButton onClick={handleDecreaseQuantity} className="item-info__button_plus item-info__button_icon">
