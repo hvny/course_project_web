@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, IconButton } from '@mui/material';
+import { Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 import "./Cart.css";
@@ -17,13 +17,16 @@ export default function Cart({handleClose}) {
             </button>
             <h2 className="cart__title">Корзина</h2>
             {
-                items.length === 0 ?
+                items.length === 1 ?
                 <div className="cart__container_empty">
                     <p className="cart__subtitle">В корзине пусто</p>
                     <Link to="/" className="link cart__link" onClick={handleClose}>Перейти в меню</Link>
                 </div>
                 :
                 <div className="cart__container">
+                    <div className="cart__cards">
+
+                    </div>
                     <div className="cart__buttons-container">
                         <Button variant="contained">Оформить заказ</Button>
                         <Button variant="otlined">Очистить корзину</Button>

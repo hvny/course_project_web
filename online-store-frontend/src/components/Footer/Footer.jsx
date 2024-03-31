@@ -17,7 +17,8 @@ export default function Footer() {
                         <ul className="footer__sn-list">
                             <li className="footer__sn-item">
                                 <a href="https://vk.com/hlebnitca" 
-                                    target="_blank" 
+                                    target="_blank"
+                                    rel="noreferrer"
                                     aria-label="Ссылка на группу Вконтакте"
                                     title="Ссылка на группу Вконтакте"
                                     className="footer__link footer__sn-link"
@@ -34,6 +35,7 @@ export default function Footer() {
                                 <a 
                                     href="https://t.me/hlebnitca_bakery" 
                                     target="_blank" 
+                                    rel="noreferrer"
                                     aria-label="Ссылка на Телеграм-канал"
                                     title="Ссылка на Телеграм-канал"
                                     className="footer__link footer__sn-link"
@@ -48,8 +50,9 @@ export default function Footer() {
                             </li>
                             <li className="footer__sn-item">
                                 <a 
-                                    href="https://t.me/hlebnitca_bakery" 
+                                    href="https://ok.ru/hlebnitca" 
                                     target="_blank"
+                                    rel="noreferrer"
                                     aria-label="Ссылка на сообщество в Одноклассниках"
                                     title="Ссылка на сообщество в Одноклассниках"
                                     className="footer__link footer__sn-link"
@@ -68,6 +71,7 @@ export default function Footer() {
                         <a 
                             href="http://hlebnitca.ru/about" 
                             target="_blank"
+                            rel="noreferrer"
                             aria-label="Ссылка на страницу 'О нас'"
                             title="Ссылка на страницу 'О нас'"
                             className="footer__title footer__link link" 
@@ -79,6 +83,7 @@ export default function Footer() {
                         <a 
                             href="https://rabota.hlebnitca.ru/" 
                             target="_blank"
+                            rel="noreferrer"
                             aria-label="Ссылка на страницу 'Работа'"
                             title="Ссылка на страницу 'Работа'"
                             className="footer__title footer__link link" 
@@ -90,6 +95,7 @@ export default function Footer() {
                         <a 
                             href="tel:+78007707118" 
                             target="_blank"
+                            rel="noreferrer"
                             aria-label="Номер телефона"
                             title="Номер телефона"
                             className="footer__title footer__link link footer__link_phone" 
