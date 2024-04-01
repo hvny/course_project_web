@@ -80,8 +80,36 @@ export default function Profile({ user }) {
               <h2 className="profile__subtitle">Ваши данные</h2>
               <TextField 
                 id="outlined-basic" 
-                className="profile__input"
+                // className="profile__input"
                 label="Имя" 
+                sx={{
+                  backgroundColor: '#ffd60a',
+                  border: '3px solid #001d3d',
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: '#003566',
+                    textTransform: 'capitalize',
+                  },
+                }}
+                InputProps={{
+                  sx: {
+                    '&:hover fieldset': {
+                      border: '2px solid blue!important',
+                      borderRadius: 0,
+                    },
+                    '&:focus-within fieldset, &:focus-visible fieldset': {
+                      border: '4px solid red!important',
+                    },
+                  },
+                }}
+                inputProps={{
+                  sx: {
+                    color: 'red',
+                    paddingLeft: '15px',
+                    fontSize: '20px',
+                  },
+                }}
                 {...register("firstName")}
               />
               <TextField 
