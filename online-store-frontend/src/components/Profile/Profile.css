@@ -33,7 +33,7 @@
     width: 300px;
     flex-direction: column;
     gap: 30px;
-    text-align: center;
+    align-items: center;
 }
 
 .profile__input {
@@ -42,6 +42,19 @@
 
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #ffffff;
+}
+
+.profile__button_submit {
+    width: 80%;
+    border-color: #663334;
+    border-radius: 10px;
+    color: #663334;
+}
+
+.profile__button_submit:hover {
+    color: #663334;
+    border-color: #663334;
+    background-color: transparent;
 }
 
 .profile__address-container {

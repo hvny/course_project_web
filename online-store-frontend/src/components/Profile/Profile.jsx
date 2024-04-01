@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { joiResolver } from "@hookform/resolvers/joi";
 import userDataScheme from "../../utils/schemes/userDataScheme";
@@ -15,24 +15,31 @@ import AddressForm from "./AddressForm/AddressForm.tsx";
 
 import styled from "@mui/styled-engine";
 
-export default function Profile() {
+export default function Profile({ user }) {
   const schema = [];
   const [isPopupOpen, setIsPopupOpen] = useState(false);      //попап добавления адреса
 
+  //localStorage.clear();
   const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
     resolver:  joiResolver(userDataScheme),
     defaultValues: {
-      firstName: "",
-      phoneNumber: "",
-      email: "",
+      firstName: user ? user.firstName : "",
+      phoneNumber: user ? user.phoneNumber : "",
+      email: user ? user.email : "",
     },
   });
+
+  
 
   function handlePopup() {
     setIsPopupOpen(!isPopupOpen);
   }
 
   function userDataOnSubmit(data) {
+    // localStorage.setItem("userName", data.firstName);
+    // localStorage.setItem("email", data.email);
+    // localStorage.setItem("phoneNumber", data.phoneNumber);
+    localStorage.setItem("user", JSON.stringify(data));
     console.log(data);
   }
 
@@ -89,7 +96,7 @@ export default function Profile() {
                 label="E-mail" 
                 {...register("email")}
               />
-              <Button variant="contained" type="submit">Сохранить</Button>
+              <Button variant="outlined" type="submit" className="profile__button_submit">Сохранить</Button>
           </form>
           <div className="profile__address-container profile__container">
             <h2 className="profile__subtitle">Ваши адреса</h2>

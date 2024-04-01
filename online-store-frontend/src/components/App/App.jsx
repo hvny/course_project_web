@@ -25,6 +25,8 @@ import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/te
 
 export default function App() {
   const [itemsArr, setItemsArr] = useState([]);
+  const [user, setUser] = useState({});
+
   const bakeryItems = [
     {
       title: "Хачапури",
@@ -61,6 +63,14 @@ export default function App() {
   
   const eventsArr = [];
 
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+
+    if (userInfo) {
+      setUser(userInfo);
+    }
+  }, []); 
+
 
   return (
     <div className="page">
@@ -80,7 +90,7 @@ export default function App() {
           <Route path="/events" element={<Events eventsArr={eventsArr} />} />
           <Route path="/order" element={<Order />} />
           <Route path="/about-delivery" element={<Delivery />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={user} />} />
 
         </Routes>
       </main>
