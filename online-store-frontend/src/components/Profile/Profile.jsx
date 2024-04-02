@@ -29,6 +29,26 @@ export default function Profile({ user }) {
     },
   });
 
+  const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#663334',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#663334',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#663334',
+      },
+      '&:hover fieldset': {
+        borderColor: '#663334',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#663334',
+      },
+    },
+  });
+
   
 
   function handlePopup() {
@@ -42,31 +62,7 @@ export default function Profile({ user }) {
     localStorage.setItem("user", JSON.stringify(data));
     console.log(data);
   }
-
-  // const CssTextField = styled(<TextField/>)({
-  //   root: {
-  //     '& label': {
-  //       color: 'red',
-  //     },
-  //     '& label.Mui-focused': {
-  //       color: 'white',
-  //     },
-  //     '& .MuiInput-underline:after': {
-  //       borderBottomColor: 'yellow',
-  //     },
-  //     '& .MuiOutlinedInput-root': {
-  //       '& fieldset': {
-  //         borderColor: 'white',
-  //       },
-  //       '&:hover fieldset': {
-  //         borderColor: 'white',
-  //       },
-  //       '&.Mui-focused fieldset': {
-  //         borderColor: 'yellow',
-  //       },
-  //     },
-  //   },
-  // })(TextField);
+  console.log("errors: ", errors);
 
   return (
     <StyledEngineProvider injectFirst>
@@ -76,54 +72,32 @@ export default function Profile({ user }) {
             <form 
               className="profile__form profile__container"
               onSubmit={handleSubmit(userDataOnSubmit)}
+              isValid={isValid}
+              isDirty={isDirty}
             >
               <h2 className="profile__subtitle">Ваши данные</h2>
-              <TextField 
+              <CssTextField 
                 id="outlined-basic" 
-                // className="profile__input"
+                className="profile__input"
                 label="Имя" 
-                sx={{
-                  backgroundColor: '#ffd60a',
-                  border: '3px solid #001d3d',
-                }}
-                InputLabelProps={{
-                  sx: {
-                    color: '#003566',
-                    textTransform: 'capitalize',
-                  },
-                }}
-                InputProps={{
-                  sx: {
-                    '&:hover fieldset': {
-                      border: '2px solid blue!important',
-                      borderRadius: 0,
-                    },
-                    '&:focus-within fieldset, &:focus-visible fieldset': {
-                      border: '4px solid red!important',
-                    },
-                  },
-                }}
-                inputProps={{
-                  sx: {
-                    color: 'red',
-                    paddingLeft: '15px',
-                    fontSize: '20px',
-                  },
-                }}
                 {...register("firstName")}
               />
-              <TextField 
+              <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
+
+              <CssTextField 
                 id="outlined-basic"
                 className="profile__input"
                 label="Номер телефона" 
                 {...register("phoneNumber")}
               />
-              <TextField 
+              <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
+              <CssTextField 
                 id="outlined-basic"
                 className="profile__input"
                 label="E-mail" 
                 {...register("email")}
               />
+              <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
               <Button variant="outlined" type="submit" className="profile__button_submit">Сохранить</Button>
           </form>
           <div className="profile__address-container profile__container">

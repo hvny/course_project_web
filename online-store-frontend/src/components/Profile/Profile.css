@@ -37,11 +37,11 @@
 }
 
 .profile__input {
-    border: 1px solid #663334;
+    /* border: 1px solid #663334; */
 }
 
 .profile__input:hover {
-    border: 1px solid #663334;
+    /* border: 1px solid #663334; */
 
 }
 
@@ -82,4 +82,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
+}
+
+.profile__form-error {
+    display: none;
+}
+
+.profile__form-error_active {
+    display: block;
 }
