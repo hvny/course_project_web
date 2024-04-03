@@ -1,7 +1,8 @@
 import "./Profile.css";
 
-import TextField from '@mui/material/TextField';
-import { Button, StyledEngineProvider } from "@mui/material";
+import { Button, Dialog, StyledEngineProvider } from "@mui/material";
+import DialogContent from '@mui/material/DialogContent';
+
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
@@ -12,8 +13,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import userDataScheme from "../../utils/schemes/userDataScheme";
 
 import AddressForm from "./AddressForm/AddressForm.tsx";
-
-import styled from "@mui/styled-engine";
+import { CssTextField } from "../../utils/constants/profileConstants.js";
 
 export default function Profile({ user }) {
   const schema = [];
@@ -29,28 +29,6 @@ export default function Profile({ user }) {
     },
   });
 
-  const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: '#663334',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: '#663334',
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#663334',
-      },
-      '&:hover fieldset': {
-        borderColor: '#663334',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: '#663334',
-      },
-    },
-  });
-
-  
-
   function handlePopup() {
     setIsPopupOpen(!isPopupOpen);
   }
@@ -62,7 +40,6 @@ export default function Profile({ user }) {
     localStorage.setItem("user", JSON.stringify(data));
     console.log(data);
   }
-  console.log("errors: ", errors);
 
   return (
     <StyledEngineProvider injectFirst>
@@ -72,14 +49,15 @@ export default function Profile({ user }) {
             <form 
               className="profile__form profile__container"
               onSubmit={handleSubmit(userDataOnSubmit)}
-              isValid={isValid}
-              isDirty={isDirty}
+              // isvalid={isValid}
             >
               <h2 className="profile__subtitle">Ваши данные</h2>
               <CssTextField 
                 id="outlined-basic" 
                 className="profile__input"
                 label="Имя" 
+                title="Ваше имя"
+                aria-label="Поле вввода для имени"
                 {...register("firstName")}
               />
               <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
@@ -88,6 +66,8 @@ export default function Profile({ user }) {
                 id="outlined-basic"
                 className="profile__input"
                 label="Номер телефона" 
+                title="Ваш номер телефона"
+                aria-label="Поле вввода для номера телефона"
                 {...register("phoneNumber")}
               />
               <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
@@ -95,25 +75,33 @@ export default function Profile({ user }) {
                 id="outlined-basic"
                 className="profile__input"
                 label="E-mail" 
+                title="Ваша электронная почта"
+                aria-label="Поле вввода для электронной почты"
                 {...register("email")}
               />
               <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
-              <Button variant="outlined" type="submit" className="profile__button_submit">Сохранить</Button>
-          </form>
-          <div className="profile__address-container profile__container">
-            <h2 className="profile__subtitle">Ваши адреса</h2>
-            <Button variant="outlined" className="profile__button profile__button_add-address" onClick={handlePopup}>Добавить</Button>
-            <Modal
-              open={isPopupOpen}
-              onClose={handlePopup}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box>
-                <AddressForm />
-              </Box>
-            </Modal>
-          </div>
+              <Button 
+                variant="outlined" 
+                type="submit" 
+                className="profile__button profile__button_submit"
+              >
+                Сохранить
+              </Button>
+            </form>
+            <div className="profile__address-container profile__container">
+              <h2 className="profile__subtitle profile__subtitle_address">Ваши адреса</h2>
+              <Button variant="outlined" className="profile__button profile__button_add-address" onClick={handlePopup}>Добавить</Button>
+              <Dialog
+                open={isPopupOpen}
+                onClose={handlePopup}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <DialogContent className="profile__address-dialog">
+                  <AddressForm />
+                </DialogContent>
+              </Dialog>
+            </div>
         </div>
       </section>
     </StyledEngineProvider>

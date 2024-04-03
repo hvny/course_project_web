@@ -17,7 +17,7 @@ export default function Cart({handleClose}) {
             </button>
             <h2 className="cart__title">Корзина</h2>
             {
-                items.length === 1 ?
+                items.length === 0 ?
                 <div className="cart__container_empty">
                     <p className="cart__subtitle">В корзине пусто</p>
                     <Link to="/" className="link cart__link" onClick={handleClose}>Перейти в меню</Link>
