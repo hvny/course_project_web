@@ -13,6 +13,7 @@ import Order from "../Order/Order";
 import Delivery from "../Delivery/Delivery";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
+import PageNotFound from "../PageNotFound/PageNotFound";
 import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation";
 
 import hachapuriImg from "../../images/hachapuri.jpg";
@@ -113,7 +114,7 @@ export default function App() {
           <Route path="/order" element={<Order />} />
           <Route path="/about-delivery" element={<Delivery />} />
           <Route path="/profile" element={<Profile user={user} />} />
-
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <CustomBottomNavigation />  
