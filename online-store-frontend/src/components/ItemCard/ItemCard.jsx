@@ -2,16 +2,23 @@ import "./ItemCard.css";
 
 import { useState } from 'react';
 
+import ItemPopup from './ItemPopup/ItemPopup';
+
+import { StyledEngineProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, CardActionArea, CardActions, IconButton } from '@mui/material';
+import { 
+    Button, 
+    CardActionArea, 
+    CardActions, 
+    IconButton 
+} from '@mui/material';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import ItemPopup from './ItemPopup/ItemPopup';
+
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { StyledEngineProvider } from '@mui/material/styles';
 
 export default function ItemCard({item}) {
     const [isPopupOpen, setIsPopupOpen] = useState(false);

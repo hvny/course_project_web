@@ -1,0 +1,39 @@
+.events__card {
+    width: 400px;
+    min-height: 400px;
+    color: #663334;
+}
+
+.events__card-image {
+    height: 300px;
+}
+
+.events__card-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+.events__card-paragraph {
+    font-size: 16px;
+    word-wrap: break-word;    
+    margin: 0;
+}
+
+@media screen and (max-width: 479px) {
+    .events__card {
+        max-width: 300px;
+        min-height: 300px;
+        color: #663334;
+    }
+
+    .events__card-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .events__card-paragraph {
+        font-size: 14px;
+    }
+}

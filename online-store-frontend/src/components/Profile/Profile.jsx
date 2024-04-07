@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { joiResolver } from "@hookform/resolvers/joi";
 import userDataScheme from "../../utils/schemes/userDataScheme";
 
-import AddressForm from "./AddressForm/AddressForm.tsx";
+import AddressForm from "./AddressForm/AddressForm.jsx";
 import { CssTextField } from "../../utils/constants/profileConstants.js";
 
 export default function Profile({ user }) {

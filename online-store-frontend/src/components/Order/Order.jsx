@@ -3,7 +3,6 @@ import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNaviga
 export default function Order() {
     return (
         <section className="order">
-            <CustomBottomNavigation />
 
         </section>
     );

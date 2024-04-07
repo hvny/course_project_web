@@ -20,6 +20,7 @@ import medovikImg from "../../images/medovik.jpeg";
 import PragueImg from "../../images/cake.jpg";
 import potatoImg from "../../images/potato.jpg";
 import milkshakeImg from "../../images/milkshake.jpg";
+import eventImg from "../../images/eventExample.jpg";
 
 import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/test";
 
@@ -61,7 +62,28 @@ export default function App() {
     }
   ];
   
-  const eventsArr = [];
+  const eventsArr = [
+    {
+      title: "Акция1",
+      image: eventImg,
+      about: loremIpsumV2,
+    },
+    {
+      title: "Акция2",
+      image: eventImg,
+      about:loremIpsumV3,
+    },
+    {
+      title: "Акция2",
+      image: eventImg,
+      about:loremIpsumV3,
+    },
+    {
+      title: "Акция2",
+      image: eventImg,
+      about:loremIpsumV3,
+    }
+  ];
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
