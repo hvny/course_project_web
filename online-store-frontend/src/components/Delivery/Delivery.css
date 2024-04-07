@@ -1,0 +1,21 @@
+.delivery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #663334;
+}
+
+.delivery__container {
+    width: 100%;
+}
+
+.delivery__about {
+    width: 500px;
+}
+
+
+.delivery__about-paragraph {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
