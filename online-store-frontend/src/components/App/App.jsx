@@ -86,6 +86,9 @@ export default function App() {
     }
   ];
 
+  const [cartItems, setCartItems] = useState(dessertsItems);
+
+
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
 

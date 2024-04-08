@@ -8,7 +8,7 @@ import Navigation from "./Navigation/Navigation";
 import HeaderButtons from "./HeaderButtons/HeaderButtons";
 
 
-function Header(props) {
+function Header() {
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     function handleCartClick() {
@@ -18,15 +18,18 @@ function Header(props) {
     return (
         <header className="header">
             <div className="header__container">
-                <Link to="/" className="header__logo-link"><img src={logo} className="header__logo" alt="Логотип компании"/></Link>
-
+                <Link to="/" className="header__logo-link">
+                    <img 
+                        src={logo} 
+                        alt="Логотип компании"
+                        title="Логотип пекарни"
+                        aria-label="Логотип пекарни, по нажатию ведёт на страницу с меню"
+                        className="header__logo" 
+                    />
+                </Link>
                 <div className="header__content">
                     <Navigation />
-                    {/* <div className="header__phone-container">
-                        <LocalPhoneIcon size="large" />
-                        <p className="header__phone-number">8 800 770-71-18</p>    
-                    </div> */}
-                    <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick}  />
+                    <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} />
                 </div>
             </div>
         </header>

@@ -31,7 +31,7 @@ export default function HeaderButtons({ isCartOpen, handleCartClick }) {
                     <Cart handleClose={handleCartClick} />
                 </Drawer>
                 <Link 
-                    aria-label="Прфиль"
+                    aria-label="Профиль"
                     className="header__button header__button_profile" 
                     to="/profile"
                     title="Профиль"

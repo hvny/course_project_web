@@ -1,13 +1,15 @@
+import "./Cart.css";
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import "./Cart.css";
-    
+import CartItem from "./CartItem/CartItem";
+
 
 export default function Cart({handleClose}) {
-
     const [items, setItems] = useState([]);
 
     return (
@@ -33,6 +35,7 @@ export default function Cart({handleClose}) {
                     </div>
                 </div>
             }
+            <CartItem />
         </section>
     );
 }
