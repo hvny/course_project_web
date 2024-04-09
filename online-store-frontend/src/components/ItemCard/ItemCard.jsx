@@ -19,6 +19,7 @@ import Box from '@mui/material/Box';
 
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function ItemCard({item}) {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -80,7 +81,10 @@ export default function ItemCard({item}) {
                         itemsQuantity === 0 ?
                             <Button size="small" color="primary" className="card__button card__button_add" variant="outlined" onClick={handleAddButtonClick}>Добавить</Button>
                         :
-                        <div className="card__buttons">
+                        <IconButton onClick={handleDecreaseQuantity} className="card__button card__button_checked">
+                                <CheckCircleIcon />
+                        </IconButton>
+                        /*<div className="card__buttons">
                             <IconButton onClick={handleDecreaseQuantity}>
                                 <RemoveIcon />
                             </IconButton>
@@ -88,7 +92,7 @@ export default function ItemCard({item}) {
                             <IconButton onClick={handleIncreaseQuantity}>
                                 <AddIcon/>
                             </IconButton>
-                        </div>
+                        </div>*/
                     }
                     
                 </CardActions>

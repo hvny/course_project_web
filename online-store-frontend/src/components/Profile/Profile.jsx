@@ -1,10 +1,11 @@
 import "./Profile.css";
 
-import { Button, Dialog, StyledEngineProvider } from "@mui/material";
+import { 
+  Button, 
+  Dialog,
+  StyledEngineProvider
+} from "@mui/material";
 import DialogContent from '@mui/material/DialogContent';
-
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";

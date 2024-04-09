@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Cart from "../../Cart/Cart";
 
 
-export default function HeaderButtons({ isCartOpen, handleCartClick }) {
+export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartItems }) {
     
     return (
         <StyledEngineProvider injectFirst>
@@ -28,7 +28,7 @@ export default function HeaderButtons({ isCartOpen, handleCartClick }) {
                     onClose={handleCartClick} 
                     anchor="right"
                 >
-                    <Cart handleClose={handleCartClick} />
+                    <Cart handleClose={handleCartClick} tempCartItems={tempCartItems} />
                 </Drawer>
                 <Link 
                     aria-label="Профиль"

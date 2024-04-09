@@ -1,7 +1,6 @@
 .card {
     width: auto; 
     max-width: 228px;
-    /* height: 270px; */
 }
 
 .card__content {
@@ -15,7 +14,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* background-color: #FCE6C6; */
     background-color: #FCE6C6;
     border-radius: 20px;
     box-sizing: border-box;
@@ -50,21 +48,9 @@
     color: #f5d287;
 }
 
-/* .card__button_add:focus {
-    background-color: red;
-
+.card__button_checked {
+    color: #F6B221;
 }
-
-.card__button_add:active {
-    background-color: red;
-
-} */
-/* 
-@media screen and (min-width: 1280px)  {
-    .card {
-        width: auto;
-    }
-} */
 
 @media screen and (min-width: 650px) and (max-width: 1024px) {
     .card__popup {

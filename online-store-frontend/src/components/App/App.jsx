@@ -100,7 +100,7 @@ export default function App() {
 
   return (
     <div className="page">
-      <Header />
+      <Header tempCartItems={cartItems} />
       <main className="main">
         <Routes>
           <Route 

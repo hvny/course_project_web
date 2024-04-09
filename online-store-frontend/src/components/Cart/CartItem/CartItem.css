@@ -38,9 +38,28 @@
     margin:0;
 }
 
+.cart-item__buttons {
+}
+
+.cart-item__button_add {
+    padding: 0;
+}
+
+.cart-item__button_remove {
+    padding: 0;
+}
+
 .cart-item__button_delete {
     color: #663334;
     position: absolute;
     bottom: 5px;
     right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.cart-item__quantity {
+    margin: 0 10px;
+    color: #663334;
+    font-size: 17px;
 }
