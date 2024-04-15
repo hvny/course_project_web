@@ -73,7 +73,7 @@ export default function App() {
       title: "Акция2",
       image: eventImg,
       about:loremIpsumV3,
-    },
+    },/*
     {
       title: "Акция2",
       image: eventImg,
@@ -83,7 +83,7 @@ export default function App() {
       title: "Акция2",
       image: eventImg,
       about:loremIpsumV3,
-    }
+    }*/
   ];
 
   const [cartItems, setCartItems] = useState(dessertsItems);

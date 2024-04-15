@@ -57,8 +57,9 @@
 }
 
 .profile__address-container {
-    width: 500px;
+    width: 600px;
     text-align: center;
+    border: 1px solid red;
 }
 
 .profile__form_add-address {

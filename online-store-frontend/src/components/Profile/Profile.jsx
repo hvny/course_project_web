@@ -13,12 +13,14 @@ import { useEffect, useState } from "react";
 import { joiResolver } from "@hookform/resolvers/joi";
 import userDataScheme from "../../utils/schemes/userDataScheme";
 
+import DataTable from "../DataTable/DataTable.jsx";
 import AddressForm from "./AddressForm/AddressForm.jsx";
 import { CssTextField } from "../../utils/constants/profileConstants.js";
 
 export default function Profile({ user }) {
   const schema = [];
   const [isPopupOpen, setIsPopupOpen] = useState(false);      //попап добавления адреса
+  const [addressesArr, setAddressesArr] = useState([]);
 
   //localStorage.clear();
   const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
@@ -91,6 +93,12 @@ export default function Profile({ user }) {
             </form>
             <div className="profile__address-container profile__container">
               <h2 className="profile__subtitle profile__subtitle_address">Ваши адреса</h2>
+              {
+                addressesArr.length == 0 ? 
+                <DataTable />
+                :
+                <></>
+              }
               <Button variant="outlined" className="profile__button profile__button_add-address" onClick={handlePopup}>Добавить</Button>
               <Dialog
                 open={isPopupOpen}
