@@ -2,11 +2,13 @@ import "./DataTable.css";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
+import { styled } from '@mui/material/styles';
 
 import { StyledEngineProvider } from '@mui/material/styles';
 
@@ -55,6 +57,33 @@ export default function DataTable({ data }) {
         { id: 2, city: "Йошкар-Ола", street: "Лермонтова", house: 14, entry: 5, floor: 28, apartment: 228 }
     ];
 
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+        [`&.${tableCellClasses.head}`]: {
+          backgroundColor: "#FCE6C6",
+          color: "#663334",
+        },
+        [`&.${tableCellClasses.body}`]: {
+          fontSize: 14,
+          backgroundColor: "#FCE6C6",
+          color: "#663334",
+
+
+        },
+      }));
+      
+      const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            borderColor: "#FCE6C6",
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+          border: 2,
+          borderColor: "#FCE6C6",
+          backgroundColor: "#f5d5a6",
+        },
+      }));
+      
+
     return (
         <StyledEngineProvider injectFirst>
             <TableContainer component={Paper}>
@@ -63,26 +92,26 @@ export default function DataTable({ data }) {
                         <TableRow>
                             {
                                 columns.map((column) => (
-                                    <TableCell align="left">{column.headerName}</TableCell>
+                                    <StyledTableCell align="left">{column.headerName}</StyledTableCell>
                                 ))
                             }
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <TableRow
+                            <StyledTableRow
                                 key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">{row.id}</TableCell>
-                                <TableCell align="left">{row.city}</TableCell>
-                                <TableCell align="left">{row.street}</TableCell>
-                                <TableCell align="left">{row.house}</TableCell>
-                                <TableCell align="left">{row.entry}</TableCell>
-                                <TableCell align="left">{row.floor}</TableCell>
-                                <TableCell align="left">{row.apartment}</TableCell>
-                                
-                            </TableRow>
+                                <StyledTableCell component="th" scope="row">{row.id}</StyledTableCell>
+                                <StyledTableCell align="left">{row.city}</StyledTableCell>
+                                <StyledTableCell align="left">{row.street}</StyledTableCell>
+                                <StyledTableCell align="left">{row.house}</StyledTableCell>
+                                <StyledTableCell align="left">{row.entry}</StyledTableCell>
+                                <StyledTableCell align="left">{row.floor}</StyledTableCell>
+                                <StyledTableCell align="left">{row.apartment}</StyledTableCell>
+
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
