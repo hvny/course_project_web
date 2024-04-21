@@ -7,7 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import { styled } from '@mui/material/styles';
 
 import { StyledEngineProvider } from '@mui/material/styles';
@@ -20,11 +22,11 @@ export default function DataTable({ data }) {
             headerName: 'ID',
             width: 20, 
         },
-        { 
+        /*{ 
             field: 'city',
             headerName: 'Город',
             width: 100, 
-        },
+        },*/
         { 
             field: 'street',
             headerName: 'Улица',
@@ -36,6 +38,11 @@ export default function DataTable({ data }) {
             width: 10,
         },
         {
+            field: 'info',
+            headerName: '',
+            width: 10,
+        },
+        /*{
             field: 'entry',
             headerName: 'Подъезд',
             width: 10,
@@ -49,7 +56,7 @@ export default function DataTable({ data }) {
             field: 'apartment',
             headerName: 'Квартира',
             width: 10,
-        },
+        },*/
     ];
 
     const rows = [
@@ -59,37 +66,35 @@ export default function DataTable({ data }) {
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
-          backgroundColor: "#FCE6C6",
-          color: "#663334",
+            backgroundColor: "#FCE6C6",
+            color: "#663334",
+            borderColor: "#663334",
+            fontSize: 18,
         },
         [`&.${tableCellClasses.body}`]: {
-          fontSize: 14,
-          backgroundColor: "#FCE6C6",
-          color: "#663334",
-
-
+            backgroundColor: "#FCE6C6",
+            color: "#663334",
+            borderColor: "#663334",
+            fontSize: 16,
         },
       }));
       
       const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '&:nth-of-type(odd)': {
-            borderColor: "#FCE6C6",
-        },
-        // hide last border
-        '&:last-child td, &:last-child th': {
-          border: 2,
-          borderColor: "#FCE6C6",
-          backgroundColor: "#f5d5a6",
-        },
+        // '&:nth-of-type(odd)': {
+        // },
+        // // hide last border
+        // '&:last-child td, &:last-child th': {
+          
+        // },
       }));
       
 
     return (
         <StyledEngineProvider injectFirst>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <Table sx={{ minWidth: 650 }} aria-label="simple table" className="data-table">
                     <TableHead>
-                        <TableRow>
+                        <TableRow className="data-table__row">
                             {
                                 columns.map((column) => (
                                     <StyledTableCell align="left">{column.headerName}</StyledTableCell>
@@ -102,15 +107,20 @@ export default function DataTable({ data }) {
                             <StyledTableRow
                                 key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                className="data-table__row"
                             >
                                 <StyledTableCell component="th" scope="row">{row.id}</StyledTableCell>
-                                <StyledTableCell align="left">{row.city}</StyledTableCell>
+                                {/* <StyledTableCell align="left">{row.city}</StyledTableCell> */}
                                 <StyledTableCell align="left">{row.street}</StyledTableCell>
                                 <StyledTableCell align="left">{row.house}</StyledTableCell>
-                                <StyledTableCell align="left">{row.entry}</StyledTableCell>
-                                <StyledTableCell align="left">{row.floor}</StyledTableCell>
-                                <StyledTableCell align="left">{row.apartment}</StyledTableCell>
-
+                                {/* <StyledTableCell align="left">{row.entry}</StyledTableCell> */}
+                                {/* <StyledTableCell align="left">{row.floor}</StyledTableCell> */}
+                                {/* <StyledTableCell align="left">{row.apartment}</StyledTableCell> */}
+                                <StyledTableCell align="left">
+                                    <IconButton aria-label="delete">
+                                        <MenuIcon />
+                                    </IconButton>
+                                </StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>
