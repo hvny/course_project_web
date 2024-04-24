@@ -1,19 +1,23 @@
 import "./DataTable.css";
 
+import { useState } from "react";
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { StyledTableCell } from "../../utils/constants/dataTableConstants";
 
-import MenuIcon from '@mui/icons-material/Menu';
-import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import { Button } from "@mui/material";
+
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { StyledEngineProvider } from '@mui/material/styles';
-
 
 export default function DataTable({ data }) {
     const columns = [
@@ -64,35 +68,10 @@ export default function DataTable({ data }) {
         { id: 2, city: "Йошкар-Ола", street: "Лермонтова", house: 14, entry: 5, floor: 28, apartment: 228 }
     ];
 
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-            backgroundColor: "#FCE6C6",
-            color: "#663334",
-            borderColor: "#663334",
-            fontSize: 18,
-        },
-        [`&.${tableCellClasses.body}`]: {
-            backgroundColor: "#FCE6C6",
-            color: "#663334",
-            borderColor: "#663334",
-            fontSize: 16,
-        },
-      }));
-      
-      const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        // '&:nth-of-type(odd)': {
-        // },
-        // // hide last border
-        // '&:last-child td, &:last-child th': {
-          
-        // },
-      }));
-      
-
     return (
         <StyledEngineProvider injectFirst>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table" className="data-table">
+                <Table aria-label="simple table" className="data-table">
                     <TableHead>
                         <TableRow className="data-table__row">
                             {
@@ -104,7 +83,7 @@ export default function DataTable({ data }) {
                     </TableHead>
                     <TableBody>
                         {rows.map((row) => (
-                            <StyledTableRow
+                            <TableRow
                                 key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 className="data-table__row"
@@ -116,12 +95,10 @@ export default function DataTable({ data }) {
                                 {/* <StyledTableCell align="left">{row.entry}</StyledTableCell> */}
                                 {/* <StyledTableCell align="left">{row.floor}</StyledTableCell> */}
                                 {/* <StyledTableCell align="left">{row.apartment}</StyledTableCell> */}
-                                <StyledTableCell align="left">
-                                    <IconButton aria-label="delete">
-                                        <MenuIcon />
-                                    </IconButton>
+                                <StyledTableCell align="left" >
+                                    
                                 </StyledTableCell>
-                            </StyledTableRow>
+                            </TableRow>
                         ))}
                     </TableBody>
                 </Table>

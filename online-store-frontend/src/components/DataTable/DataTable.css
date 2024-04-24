@@ -1,3 +1,16 @@
 .data-table {
     /* border: 1px solid #663334; */
 }
+
+.data-table__row_menu {
+    position: relative;
+}
+
+.data-table__popover {
+    position: absolute;
+    border: 1px solid red;
+}
+
+.data-table__popover-content {
+    
+}
