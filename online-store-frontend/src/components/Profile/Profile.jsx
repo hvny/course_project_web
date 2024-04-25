@@ -32,6 +32,8 @@ export default function Profile({ user }) {
     },
   });
 
+  // const tempAddress = { id: 1, city: "Киров", street: "Пушкина", house: 2, entry: 2, floor: 2, apartment: 2 };
+
   function handlePopup() {
     setIsPopupOpen(!isPopupOpen);
   }
@@ -107,7 +109,7 @@ export default function Profile({ user }) {
                 aria-describedby="modal-modal-description"
               >
                 <DialogContent className="profile__address-dialog">
-                  <AddressForm />
+                  <AddressForm title="Добавить адрес" buttonText="Добавить" />
                 </DialogContent>
               </Dialog>
             </div>

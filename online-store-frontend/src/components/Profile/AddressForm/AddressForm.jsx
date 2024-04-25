@@ -10,43 +10,51 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { CssTextField } from "../../../utils/constants/profileConstants";
 import { Select } from '@mui/material';
 
-export default function AddressForm() {
+export default function AddressForm({ title, buttonText, addressData }) {
+    console.log(addressData);
     return (
         <form className="address-form">
-            <h2 className="address-form__title title">Добавить адрес</h2>
+            <h2 className="address-form__title title">{title}</h2>
             <CssTextField  
                 id="outlined-basic"
                 className="address-form__input address-form__input_city address-form__input_w-250"
                 label="Город"
+                defaultValue={addressData ? addressData.city : ""}
             />
             <CssTextField  
                 id="outlined-basic"
                 className="address-form__input address-form__input_street address-form__input_w-250"
                 label="Улица"
+                defaultValue={addressData ? addressData.street : ""}
+
             />
             <div className="address-form__input-container">
                 <CssTextField  
                     id="outlined-basic"
                     className="address-form__input address-form__input_building address-form__input_w-120"
                     label="Дом"
+                    defaultValue={addressData ? addressData.house : ""}
                 />
                 <CssTextField  
                     id="outlined-basic"
                     className="address-form__input address-form__input_entry address-form__input_w-120"
                     label="Подъезд"
+                    defaultValue={addressData ? addressData.entry : ""}
                 />
                 <CssTextField  
                     id="outlined-basic"
                     className="address-form__input address-form__input_floor address-form__input_w-120"
                     label="Этаж"
+                    defaultValue={addressData ? addressData.floor : ""}
                 />
                 <CssTextField  
                     id="outlined-basic"
                     className="address-form__input address-form__input_apartment address-form__input_w-120"
                     label="Квартира"
+                    defaultValue={addressData ? addressData.apartment : ""}
                 />
             </div>        
-            <Button className="profile__button address-form__button_submit">Добавить</Button>
+            <Button className="profile__button address-form__button_submit">{buttonText}</Button>
         </form>
     );
 }

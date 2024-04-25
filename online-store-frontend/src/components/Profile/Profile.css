@@ -57,10 +57,11 @@
     width: 300px;
     height: 400px;
     border-radius: 20px;
+    padding: 30px 0;
 }
 
 .profile__address-container {
-    width: 350px;
+    width: 300px;
     text-align: center;
     /* border: 1px solid red; */
 }

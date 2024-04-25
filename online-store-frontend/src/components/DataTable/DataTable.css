@@ -2,15 +2,16 @@
     /* border: 1px solid #663334; */
 }
 
-.data-table__row_menu {
-    position: relative;
+.data-table__buttons {
+    display: flex;
+    column-gap: 10px;
 }
 
-.data-table__popover {
-    position: absolute;
-    border: 1px solid red;
+.data-table__button {
+    width: 30px;
+    height: 30px;
 }
 
-.data-table__popover-content {
-    
+.data-table__icon {
+    color: #663334;
 }

@@ -11,21 +11,28 @@ import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 import { StyledTableCell } from "../../utils/constants/dataTableConstants";
 
+import { Dialog } from "@mui/material";
+import DialogContent from '@mui/material/DialogContent';
+  
 import IconButton from '@mui/material/IconButton';
-import { Button } from "@mui/material";
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import AddressForm from "../Profile/AddressForm/AddressForm";
+
 import { StyledEngineProvider } from '@mui/material/styles';
 
 export default function DataTable({ data }) {
+    const [isItemDialogOpen, setIsItemDialogOpen] = useState(false);      //попап добавления адреса
+    const [currentRow, setCurrentRow] = useState();
+
     const columns = [
-        { 
+         /*{ 
             field: 'id',
             headerName: 'ID',
             width: 20, 
-        },
+        },*/
         /*{ 
             field: 'city',
             headerName: 'Город',
@@ -68,8 +75,28 @@ export default function DataTable({ data }) {
         { id: 2, city: "Йошкар-Ола", street: "Лермонтова", house: 14, entry: 5, floor: 28, apartment: 228 }
     ];
 
+    function returnRow(element, index, array) {
+
+    }
+
+    function handleItemDialog(event) {
+        const currentElem = event.target.closest("tr")
+        let currentElemId;
+        
+        if (currentElem) {
+            currentElemId = currentElem.getAttribute("id").substr(12);
+        }
+
+        const row = rows.find((element) => {
+            return element.id == currentElemId;
+        }); 
+        setCurrentRow(row);
+        setIsItemDialogOpen(!isItemDialogOpen);
+    }
+
     return (
         <StyledEngineProvider injectFirst>
+            { rows.length > 0 ?
             <TableContainer component={Paper}>
                 <Table aria-label="simple table" className="data-table">
                     <TableHead>
@@ -85,17 +112,40 @@ export default function DataTable({ data }) {
                         {rows.map((row) => (
                             <TableRow
                                 key={row.id}
+                                id = {`addressItem-${row.id}`}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 className="data-table__row"
                             >
-                                <StyledTableCell component="th" scope="row">{row.id}</StyledTableCell>
+                                {/* <StyledTableCell >{row.id}</StyledTableCell> */}
                                 {/* <StyledTableCell align="left">{row.city}</StyledTableCell> */}
                                 <StyledTableCell align="left">{row.street}</StyledTableCell>
                                 <StyledTableCell align="left">{row.house}</StyledTableCell>
                                 {/* <StyledTableCell align="left">{row.entry}</StyledTableCell> */}
                                 {/* <StyledTableCell align="left">{row.floor}</StyledTableCell> */}
                                 {/* <StyledTableCell align="left">{row.apartment}</StyledTableCell> */}
-                                <StyledTableCell align="left" >
+                                <StyledTableCell align="left">
+                                    <div className="data-table__buttons">
+                                        <Tooltip title="Изменить">
+                                            <IconButton className="data-table__button" onClick={handleItemDialog}>
+                                                <EditIcon className="data-table__icon" />
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Dialog
+                                            open={isItemDialogOpen}
+                                            onClose={handleItemDialog}
+                                            aria-labelledby="modal-modal-title"
+                                            aria-describedby="modal-modal-description"
+                                        >
+                                            <DialogContent className="profile__address-dialog">
+                                                <AddressForm title="Изменить адрес" buttonText="Изменить" addressData={currentRow} />
+                                            </DialogContent>
+                                        </Dialog>
+                                        <Tooltip title="Удалить">
+                                            <IconButton className="data-table__button">
+                                                <DeleteIcon className="data-table__icon" />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </div>
                                     
                                 </StyledTableCell>
                             </TableRow>
@@ -103,6 +153,9 @@ export default function DataTable({ data }) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            :
+            <></>
+            }
         </StyledEngineProvider> 
     );
 }
