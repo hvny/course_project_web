@@ -75,11 +75,7 @@ export default function DataTable({ data }) {
         { id: 2, city: "Йошкар-Ола", street: "Лермонтова", house: 14, entry: 5, floor: 28, apartment: 228 }
     ];
 
-    function returnRow(element, index, array) {
-
-    }
-
-    function handleItemDialog(event) {
+    function getCurrentItemId(event) {
         const currentElem = event.target.closest("tr")
         let currentElemId;
         
@@ -87,9 +83,23 @@ export default function DataTable({ data }) {
             currentElemId = currentElem.getAttribute("id").substr(12);
         }
 
+        return currentElemId;
+    }
+
+    function removeItem(event) {                                //удаление адреса
+        const currentElemId = getCurrentItemId(event);
+
+        console.log("адрес ", currentElemId, " удалён")
+    }
+
+    function handleItemDialog(event) {                          //открытие попапа изменения адреса
+        const currentElem = event.target.closest("tr")
+        const currentElemId = getCurrentItemId(event);
+
         const row = rows.find((element) => {
             return element.id == currentElemId;
         }); 
+
         setCurrentRow(row);
         setIsItemDialogOpen(!isItemDialogOpen);
     }
@@ -141,7 +151,7 @@ export default function DataTable({ data }) {
                                             </DialogContent>
                                         </Dialog>
                                         <Tooltip title="Удалить">
-                                            <IconButton className="data-table__button">
+                                            <IconButton className="data-table__button" onClick={removeItem}>
                                                 <DeleteIcon className="data-table__icon" />
                                             </IconButton>
                                         </Tooltip>
