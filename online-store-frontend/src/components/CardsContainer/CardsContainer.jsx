@@ -2,11 +2,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./CardsContainer.css"
 
 import CircularProgress from '@mui/material/CircularProgress';
-import hachapuriImg from "../../images/hachapuri.jpg";
-import medovikImg from "../../images/medovik.jpeg";
-import PragueImg from "../../images/cake.jpg";
-import potatoImg from "../../images/potato.jpg";
-import milkshakeImg from "../../images/milkshake.jpg";
+
 
 export default function CardsContainer({containerTitle, sectionId, cardItems}) {
     return (

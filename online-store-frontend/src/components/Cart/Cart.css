@@ -56,6 +56,12 @@
 
 .cart__button_order {
     background-color: #F6B221;
+    color: #663334;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .cart__button_order:hover {
@@ -65,6 +71,7 @@
 .cart__button_clear-all {
     color: #663334;
     font-weight: 700;
+    font-size: 14px;
 }
 
 .cart__cards {

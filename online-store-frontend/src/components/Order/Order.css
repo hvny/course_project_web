@@ -3,5 +3,22 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+}
+
+.order__container {
     border: 1px solid red;
+}
+
+.order__items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.order__button {
+    background-color: #F6B221;
+}
+
+.order__button:hover {
+    background-color: rgba(246, 178, 33, .8);;
 }

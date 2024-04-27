@@ -21,7 +21,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import AddressForm from "../Profile/AddressForm/AddressForm";
 
-import { StyledEngineProvider } from '@mui/material/styles';
 
 export default function DataTable({ data }) {
     const [isItemDialogOpen, setIsItemDialogOpen] = useState(false);      //попап добавления адреса
@@ -105,7 +104,7 @@ export default function DataTable({ data }) {
     }
 
     return (
-        <StyledEngineProvider injectFirst>
+        <>
             { rows.length > 0 ?
             <TableContainer component={Paper}>
                 <Table aria-label="simple table" className="data-table">
@@ -166,6 +165,6 @@ export default function DataTable({ data }) {
             :
             <></>
             }
-        </StyledEngineProvider> 
+        </>
     );
 }

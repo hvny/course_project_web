@@ -2,6 +2,7 @@
     border: none;
     cursor: pointer;
     transition: opacity .3s ease;
+    text-decoration: none;
 }
 
 .link:hover {

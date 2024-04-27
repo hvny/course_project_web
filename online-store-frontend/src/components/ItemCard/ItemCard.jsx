@@ -44,59 +44,47 @@ export default function ItemCard({item}) {
     }
 
     return (
-        <StyledEngineProvider injectFirst>
-            <Card className="card">
-                <CardActionArea onClick={handleCardClick}>
-                    <CardMedia
-                        component="img"
-                        height="140"
-                        image={item.image}
-                        alt={item.title}
+        <Card className="card">
+            <CardActionArea onClick={handleCardClick}>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image={item.image}
+                    alt={item.title}
+                />
+                <CardContent className="card__content">
+                    <h3 className="card__title">
+                        {item.title}
+                    </h3>
+                </CardContent>
+            </CardActionArea>
+            <Modal
+                open={isPopupOpen}
+                onClose={handleCardClick}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box className="card__popup">
+                    <ItemPopup 
+                        item={item} 
+                        handleClose={handleCardClick} 
+                        itemsQuantity={itemsQuantity}
+                        handleIncreaseQuantity={handleIncreaseQuantity}
+                        handleDecreaseQuantity={handleDecreaseQuantity}
+                        handleAddButtonClick={handleAddButtonClick}
                     />
-                    <CardContent className="card__content">
-                        <h3 className="card__title">
-                            {item.title}
-                        </h3>
-                    </CardContent>
-                </CardActionArea>
-                <Modal
-                    open={isPopupOpen}
-                    onClose={handleCardClick}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box className="card__popup">
-                        <ItemPopup 
-                            item={item} 
-                            handleClose={handleCardClick} 
-                            itemsQuantity={itemsQuantity}
-                            handleIncreaseQuantity={handleIncreaseQuantity}
-                            handleDecreaseQuantity={handleDecreaseQuantity}
-                            handleAddButtonClick={handleAddButtonClick}
-                        />
-                    </Box>
-                </Modal>
-                <CardActions className="card__actions">
-                    {
-                        itemsQuantity === 0 ?
-                            <Button size="small" color="primary" className="card__button card__button_add" variant="outlined" onClick={handleAddButtonClick}>Добавить</Button>
-                        :
-                        <IconButton onClick={handleDecreaseQuantity} className="card__button card__button_checked">
-                                <CheckCircleIcon />
-                        </IconButton>
-                        /*<div className="card__buttons">
-                            <IconButton onClick={handleDecreaseQuantity}>
-                                <RemoveIcon />
-                            </IconButton>
-                            <span className="item-info__quantity">{itemsQuantity}</span>
-                            <IconButton onClick={handleIncreaseQuantity}>
-                                <AddIcon/>
-                            </IconButton>
-                        </div>*/
-                    }
-                    
-                </CardActions>
-            </Card>
-        </StyledEngineProvider>
+                </Box>
+            </Modal>
+            <CardActions className="card__actions">
+                {
+                    itemsQuantity === 0 ?
+                    <Button size="small" color="primary" className="card__button card__button_add" variant="outlined" onClick={handleAddButtonClick}>Добавить</Button>
+                    :
+                    <IconButton onClick={handleDecreaseQuantity} className="card__button card__button_checked">
+                            <CheckCircleIcon />
+                    </IconButton>
+                } 
+            </CardActions>
+        </Card>
     );
 }
