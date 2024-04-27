@@ -4,12 +4,11 @@ import { useState } from "react";
 
 import { Button } from "@mui/material";
 
-export default function Order() {
+import ItemCardSmall from "../ItemCardSmall/ItemCardSmall";
+
+export default function Order({ tempItems }) {
     const [addressArr, setAddressArr] = useState([]);
-    const itemsArr = [
-        
-    ];
-        
+
     function createOrder() {
 
     }
@@ -19,7 +18,11 @@ export default function Order() {
             <h1 className="title order__title">Оформление заказа</h1>
             <div className="order__container">  
                 <ul className="order__items-list">
-                    
+                    {
+                        itemsArr.map((item) => (
+
+                        ))
+                    }
                 </ul>
                 <div className="order__address-container">
 

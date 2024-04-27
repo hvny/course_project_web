@@ -1,4 +1,4 @@
-import "./CartItem.css";
+import "./ItemCardSmall.css";
 
 import { useState } from "react";
 
@@ -11,33 +11,33 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-export default function CartItem({ item, deleteItem, }) {
+export default function ItemCardSmall({ item, deleteItem, }) {
     const [itemsQuantity, setItemsQuantity] = useState(1);
 
     return (
-        <Card className="cart-item">
-            <div className="cart-item__row cart-item__row_1">   
+        <Card className="item-small">
+            <div className="item-small__row item-small__row_1">   
                 <CardMedia
                     component="img"
                     image={item.image}
                     alt={item.title}
-                    className="cart-item__image"
+                    className="item-small__image"
                 />
-                <div className="cart-item__title-container">
-                    <h3 className="cart-item__title">{item.title}</h3>
+                <div className="item-small__title-container">
+                    <h3 className="item-small__title">{item.title}</h3>
                 </div>
             </div>
-            <div className="cart-item__row">
-                <CardActions className="cart-item__actions">
-                    <div className="cart-item__buttons">
-                        <IconButton className="cart-item__button_remove">
+            <div className="item-small__row">
+                <CardActions className="item-small__actions">
+                    <div className="item-small__buttons">
+                        <IconButton className="item-small__button_remove">
                             <RemoveIcon />
                         </IconButton>
-                        <span className="cart-item__quantity">{itemsQuantity}</span>
-                        <IconButton  className="cart-item__button_add">
+                        <span className="item-small__quantity">{itemsQuantity}</span>
+                        <IconButton  className="item-small__button_add">
                             <AddIcon/>
                         </IconButton>
-                        <IconButton className="cart-item__button_delete" onClick={deleteItem}>
+                        <IconButton className="item-small__button_delete" onClick={deleteItem}>
                             <DeleteIcon />
                         </IconButton>
                     </div>

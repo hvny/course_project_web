@@ -11,7 +11,7 @@ import {
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import CartItem from "./CartItem/CartItem";
+import ItemCardSmall from "../ItemCardSmall/ItemCardSmall";
 
 export default function Cart({ handleClose, tempCartItems, }) {
     // const [items, setItems] = useState([]);
@@ -33,7 +33,7 @@ export default function Cart({ handleClose, tempCartItems, }) {
                     <div className="cart__cards">
                         {
                             tempCartItems.map((item) => (
-                                <CartItem item={item} />
+                                <ItemCardSmall item={item} />
                             ))
                         }
                     </div>
