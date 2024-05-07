@@ -7,8 +7,6 @@ const userAddressScheme = Joi.object({
     entrance: Joi.string().required(),
     floor: Joi.string().required(),
     apartment: Joi.string().required(),
-
-
 });
 
 

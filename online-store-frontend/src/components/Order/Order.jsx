@@ -18,11 +18,11 @@ export default function Order({ tempItems }) {
             <h1 className="title order__title">Оформление заказа</h1>
             <div className="order__container">  
                 <ul className="order__items-list">
-                    {
+                    {/* {
                         itemsArr.map((item) => (
-
+                            
                         ))
-                    }
+                    } */}
                 </ul>
                 <div className="order__address-container">
 

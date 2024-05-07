@@ -11,7 +11,10 @@ export default function Events({eventsArr}) {
                 <div className="events__container">
                     {
                         eventsArr.map((event) => (
-                            <EventCard eventItem={event}/>
+                            <EventCard 
+                                eventItem={event} 
+                                key={event.title} 
+                            />
                         ))
                     }
                 </div>
