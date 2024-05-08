@@ -39,9 +39,10 @@ public class InMemoryUserDAO {
     }
 
     public void deleteUser(String email) {
-     var user = getUser(email);
-     if (user != null) {
-         USERS.remove(user);
-     }
+        var user = getUser(email);
+        if (user != null) {
+            USERS.remove(user);
+        }
+
     }
 }

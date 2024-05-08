@@ -4,16 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.hleb.springhleb.model.User;
 import ru.hleb.springhleb.service.UserService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/user")
 @AllArgsConstructor
 public class UserController {
 
@@ -23,4 +21,29 @@ public class UserController {
     public List<User> finAllUsers() {
         return service.findAllUsers();
     }
+
+    @PostMapping("/create")
+    public User createUser(@RequestBody User user) {
+        return service.createUser(user);
+    }
+
+    @GetMapping("/{email}")
+    public User getUser(@PathVariable String email) {
+        return service.getUser(email);
+    }
+
+    @PutMapping("/update")
+    public User updateUserInfo(User user) {
+        return service.updateUserInfo(user);
+    }
+
+    @DeleteMapping("/delete/{email}")
+    public void deleteUser(String email) {
+        service.deleteUser(email);
+    }
+
+
+
+
+
 }
