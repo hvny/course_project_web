@@ -1,4 +1,4 @@
-package ru.hleb.springhleb.model;
+package ru.hleb.springhleb.entity;
 
 import lombok.Builder;
 import lombok.Data;

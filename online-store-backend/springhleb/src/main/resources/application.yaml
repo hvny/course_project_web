@@ -1,1 +1,26 @@
-spring.application.name=springhleb
+#spring.application.name=springhleb
+#spring.datasource.url=jdbc:postgresql://localhost:5432/hlebnitsa
+#spring.datasource.username=postgres
+#spring.datasource.password=8631
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql = true
+#spring.jpa.open-in-view = false
+#spring.jpa.defer-datasource-initialization = true
+spring:
+  application:
+    name: springhleb
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hlebnitsa
+    username: postgres
+    password: 8631
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
