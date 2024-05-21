@@ -28,16 +28,14 @@ public class UserServiceImpl implements UserService {
         user.setUpdatedAt(LocalDateTime.now());*/
         jwtTokenProvider.generateAccessToken(user.getEmail());
         jwtTokenProvider.generateRefreshToken(user.getEmail());
-        if(userRepository.findByEmail(user.getEmail()).isPresent()){
+        if(userRepository.findById(user.getId()).isPresent()){
             throw new AppException("Пользователь с таким логином существует", HttpStatus.BAD_REQUEST);
         }
-
 
         return userRepository.save(user);
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("Пользователь не найден"));
+    public User getUser(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Пользователь не найден"));
     }
 }

@@ -3,8 +3,6 @@ package ru.hleb.springhleb.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
 @Data
 @Entity
 /*@AllArgsConstructor
@@ -16,15 +14,14 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id")
     private Long id;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-//    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(unique = true)
+
+    @Column(unique = true, nullable = false)
     private String phoneNumber;
 
     /*@OneToMany(mappedBy = "user")

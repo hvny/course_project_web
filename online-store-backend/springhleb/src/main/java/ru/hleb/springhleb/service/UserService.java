@@ -26,7 +26,9 @@ public interface UserService {
     private JwtTokenProvider jwtTokenProvider;*/
 
     public User saveUser(User user);
-    public User getUserByEmail(String email);
+    public User getUser(Long id);
+
+//    public User updateUserInfo();
 
     /*public void saveUser(User user) {
 //        user.setId(Long.valueOf(UUID.randomUUID().toString())); // Или другой способ генерации ID

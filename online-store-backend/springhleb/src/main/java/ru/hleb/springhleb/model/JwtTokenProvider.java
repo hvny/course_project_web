@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 @Component
 public class JwtTokenProvider  {
-    private static final String SECRET = "secret"; // Замените на свой секретный ключ
+    private static final String SECRET = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"; // Замените на свой секретный ключ
     private static final long EXPIRATION_TIME = 864000000; // 10 дней в миллисекундах
 
     public String generateAccessToken(String subject) {
@@ -45,4 +45,6 @@ public class JwtTokenProvider  {
     public String resolveToken(String token) {
         return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody().getSubject();
     }
+
+
 }

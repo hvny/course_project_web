@@ -1,20 +1,12 @@
 package ru.hleb.springhleb.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-//import ru.hleb.springhleb.model.User;
 import ru.hleb.springhleb.entity.User;
 import ru.hleb.springhleb.model.JwtTokenProvider;
-import ru.hleb.springhleb.repository.UserRepository;
 import ru.hleb.springhleb.service.UserService;
-import ru.hleb.springhleb.service.impl.UserServiceImpl;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,19 +25,26 @@ public class UserController {
             userService.saveUser(user);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e);
         }
     }
 
-    /*@GetMapping("/get-user/{email}")
-    public ResponseEntity<?> getUserById(@PathVariable String email) {
-        Optional<User> userOptional = userService.getUserByEmail(email);
+
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+        Optional<User> userOptional = Optional.ofNullable(userService.getUser(id));
 
         if (userOptional.isPresent()) {
             return ResponseEntity.ok(userOptional.get());
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    /*@PutMapping("/update")
+    public User updateUserInfo(@RequestBody User user) {
+        return userService.updateUserInfo(user);
     }*/
 
 
