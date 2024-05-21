@@ -8,7 +8,9 @@
 * Именование классов по методологии [БЭМ](https://ru.bem.info/methodology/naming-convention/);
 
 ## Технологии backend-части:
-...
+* ЯП **Java**
+* Фреймворк [Spring Boot](https://spring.io/projects/spring-boot);
+* СУБД [PostgreSQL](https://www.postgresql.org/).
 
 ## Ссылка на сайт: 
 ...
