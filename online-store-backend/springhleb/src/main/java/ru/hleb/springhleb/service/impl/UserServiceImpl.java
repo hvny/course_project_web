@@ -1,8 +1,6 @@
 package ru.hleb.springhleb.service.impl;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -26,8 +24,8 @@ public class UserServiceImpl implements UserService {
         /*user.setId(Long.valueOf(UUID.randomUUID().toString()));
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());*/
-        jwtTokenProvider.generateAccessToken(user.getEmail());
-        jwtTokenProvider.generateRefreshToken(user.getEmail());
+        jwtTokenProvider.generateAccessToken(user.getPhoneNumber());
+        jwtTokenProvider.generateRefreshToken(user.getPhoneNumber());
         if(userRepository.findById(user.getId()).isPresent()){
             throw new AppException("Пользователь с таким логином существует", HttpStatus.BAD_REQUEST);
         }
