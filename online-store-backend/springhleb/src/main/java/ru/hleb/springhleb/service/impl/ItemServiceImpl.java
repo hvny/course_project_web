@@ -27,7 +27,7 @@ public class ItemServiceImpl implements ItemService {
     @PostConstruct
     public void loadDefaultItems() {
         Item[] items = {
-                new Item("Выпечка", "Хачапури", 50.00, "test", "120г", "w"),
+                new Item("Выпечка", "Хачапури", 50.00, "test", "120г", "test"),
                 new Item("Выпечка", "Ватрушка", 25.00, "test", "80г", "w"),
                 new Item("Выпечка", "Пицца", 100.00, "test", "150г", "w"),
                 new Item("Выпечка", "Сосиска в тесте", 40.00, "test", "100г", "w"),

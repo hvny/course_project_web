@@ -1,34 +1,13 @@
 package ru.hleb.springhleb.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.token.TokenService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.hleb.springhleb.dto.request.SignUpDto;
-import ru.hleb.springhleb.dto.response.UserDto;
 import ru.hleb.springhleb.entity.User;
+import ru.hleb.springhleb.model.AuthenticationResponse;
 
 @Service
-@RequiredArgsConstructor
 public interface AuthService {
-    private final PasswordEncoder passwordEncoder;
-    private final JwtAuthenticationService jwtAuthenticationService;
-    private final AuthenticationManager authenticationManager;
+    User signUp(String firstName, String phoneNumber, String password);
+    AuthenticationResponse signIn(String phoneNumber, String password);
 
-    private final TokenService tokenService;
-    private final UserService userService;
-
-    private final UserMapper userMapper;
-
-    public UserDto signUp(SignUpDto request) {
-        User user = User.builder()
-                .phoneNumber(request.getPhoneNumber())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .firstName(request.getFirstName())
-                .build();
-
-        return userMapper.toDto(userService.saveUser(user));
-    }
-
+    void signOut(String refreshToken);
 }

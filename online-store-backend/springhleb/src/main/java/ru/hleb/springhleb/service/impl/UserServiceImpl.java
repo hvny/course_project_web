@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
         /*user.setId(Long.valueOf(UUID.randomUUID().toString()));
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());*/
-        jwtTokenProvider.generateAccessToken(user.getPhoneNumber());
-        jwtTokenProvider.generateRefreshToken(user.getPhoneNumber());
+        /*jwtTokenProvider.generateAccessToken(user.getPhoneNumber());
+        jwtTokenProvider.generateRefreshToken(user.getPhoneNumber());*/
         if(userRepository.findById(user.getId()).isPresent()){
             throw new AppException("Пользователь с таким логином существует", HttpStatus.BAD_REQUEST);
         }

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.hleb.springhleb.entity.User;
 import ru.hleb.springhleb.model.JwtTokenProvider;
 import ru.hleb.springhleb.service.UserService;
+
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,15 +21,15 @@ public class UserController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    @PostMapping("/create")
+    /*@PostMapping("/create")
     public ResponseEntity<?> createUser(@RequestBody User user) {
         try {
             userService.saveUser(user);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e);
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
-    }
+    }*/
 
 
 

@@ -1,47 +1,77 @@
 package ru.hleb.springhleb.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.hleb.springhleb.dto.request.SignUpDto;
-import ru.hleb.springhleb.dto.response.UserDto;
+
+import org.springframework.web.server.ResponseStatusException;
 import ru.hleb.springhleb.entity.User;
+import ru.hleb.springhleb.model.AuthenticationResponse;
 import ru.hleb.springhleb.repository.UserRepository;
+import ru.hleb.springhleb.service.AuthService;
 import ru.hleb.springhleb.service.UserService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
-    private final UserService userService;
-    private final UserRepository userRepository;
+    private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserDto> signUp(@RequestBody SignUpDto request) {
-        UserDto user = authenticationService.signUp(request);
+    public ResponseEntity<?> signUp(@RequestBody Map<String, String> request) {
+        String firstName = request.get("firstName");
+        String phoneNumber = request.get("phoneNumber");
+        String password = request.get("password");
 
-        if (user == null) {
-            return ResponseEntity.badRequest().build();
+        try {
+            User newUser = authService.signUp(firstName, phoneNumber, password);
+            return ResponseEntity.ok(newUser);
+        } catch (RuntimeException e) {
+            Map<String, String> errorMessage = new HashMap<>();
+            errorMessage.put("error", "Пользователь уже существует");
+            return ResponseEntity.badRequest().body(errorMessage);
         }
-
-        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<AuthResponse> signIn(@RequestBody SignInDto request) throws RoleNotFoundException {
-        return ResponseEntity.ok(authenticationService.signIn(request));
+    public ResponseEntity<?> signIn(@RequestBody Map<String, String> authMap) {
+        String phoneNumber = authMap.get("phoneNumber");
+        String password = authMap.get("password");
+
+        if (phoneNumber == null || password == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        try {
+            AuthenticationResponse authResponse = authService.signIn(phoneNumber, password);
+            return ResponseEntity.ok(authResponse);
+        } catch (ResponseStatusException e) {
+            Map<String, String> errorMessage = new HashMap<>();
+            errorMessage.put("message", e.getReason());
+            return ResponseEntity.status(e.getStatusCode()).body(errorMessage);
+        }
     }
 
-    @PostMapping("/refresh-token")
-    public void refreshToken(
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws IOException, RoleNotFoundException {
-        authenticationService.refreshToken(request, response);
+    @PostMapping("/signout")
+    public ResponseEntity<Void> signOut(@RequestBody Map<String, String> authMap) {
+        String refreshToken = authMap.get("refreshToken");
+
+        if (refreshToken == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        authService.signOut(refreshToken);
+
+        return ResponseEntity.ok().build();
     }
 }
 
