@@ -15,6 +15,11 @@ import Cart from "../../Cart/Cart";
 
 
 export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartItems }) {
+    const temp = 0;
+
+    function openAuthPopup() {
+        console.log("opened");
+    }
     
     return (
         <div className="header__buttons">
@@ -23,7 +28,6 @@ export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartIte
                     aria-label="Корзина"
                     className="header__button header__button_cart"
                     onClick={handleCartClick}
-                    // title="Корзина"
                 >
                     <ShoppingBagOutlinedIcon className="header__icon_cart" />
                 </IconButton>
@@ -36,14 +40,22 @@ export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartIte
                 <Cart handleClose={handleCartClick} tempCartItems={tempCartItems} />
             </Drawer>
             <Tooltip title="Профиль">
-                <Link 
+                {
+                    temp === 1 ? 
+                    <Link 
                     aria-label="Профиль"
                     className="header__button header__button_profile" 
                     to="/profile"
                     // title="Профиль"
-                >
-                    <PersonOutlineIcon />
-                </Link>
+                    >
+                        <PersonOutlineIcon />
+                    </Link>
+                    :
+                    <IconButton className="header__button header__button_profile"  onClick={openAuthPopup}>
+                        <PersonOutlineIcon />
+                    </IconButton>
+                }
+                
             </Tooltip> 
         </div>
     )

@@ -11,6 +11,7 @@ import ru.hleb.springhleb.service.UserService;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -18,20 +19,6 @@ public class UserController {
 
     @Autowired
     private final UserService userService;
-
-    private final JwtTokenProvider jwtTokenProvider;
-
-    /*@PostMapping("/create")
-    public ResponseEntity<?> createUser(@RequestBody User user) {
-        try {
-            userService.saveUser(user);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
-        }
-    }*/
-
-
 
     @GetMapping("/get/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id) {

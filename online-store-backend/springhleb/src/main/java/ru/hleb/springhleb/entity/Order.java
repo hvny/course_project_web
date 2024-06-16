@@ -9,6 +9,7 @@ import ru.hleb.springhleb.entity.Address;
 import ru.hleb.springhleb.entity.Cart;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -21,13 +22,17 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Column(nullable = false)
     private String status;
 
     @Column(nullable = false)
-    private LocalDateTime createdAt;
+    private Date createdAt;
 
-    @ElementCollection
+    /*@ElementCollection
     @CollectionTable(name = "order_items", joinColumns = @JoinColumn(name = "order_id")))
-    private List<Item> items;
+    private List<Item> items;*/
 }

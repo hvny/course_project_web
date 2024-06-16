@@ -28,3 +28,11 @@ spring:
     user:
       name: admin
       password: 1234
+    cors:
+      enabled: true
+      configuration-source:
+        paths: /**
+        allowed-origins: http://localhost:3000
+        allowed-methods: GET, POST, PUT, DELETE, OPTIONS
+        allowed-headers: '*'
+        exposed-headers: Authorization

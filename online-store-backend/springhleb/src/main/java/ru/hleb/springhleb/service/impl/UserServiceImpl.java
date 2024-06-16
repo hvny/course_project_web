@@ -20,18 +20,6 @@ public class UserServiceImpl implements UserService {
 
     private JwtTokenProvider jwtTokenProvider;
 
-    public User saveUser(User user) {
-        /*user.setId(Long.valueOf(UUID.randomUUID().toString()));
-        user.setCreatedAt(LocalDateTime.now());
-        user.setUpdatedAt(LocalDateTime.now());*/
-        /*jwtTokenProvider.generateAccessToken(user.getPhoneNumber());
-        jwtTokenProvider.generateRefreshToken(user.getPhoneNumber());*/
-        if(userRepository.findById(user.getId()).isPresent()){
-            throw new AppException("Пользователь с таким логином существует", HttpStatus.BAD_REQUEST);
-        }
-
-        return userRepository.save(user);
-    }
 
     public User getUser(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Пользователь не найден"));
