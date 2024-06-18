@@ -8,7 +8,7 @@ import Navigation from "./Navigation/Navigation";
 import HeaderButtons from "./HeaderButtons/HeaderButtons";
 
 
-function Header({tempCartItems}) {
+function Header({tempCartItems, handleOpenAuthPopup}) {
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     function handleCartClick() {
@@ -29,7 +29,7 @@ function Header({tempCartItems}) {
                 </Link>
                 <div className="header__content">
                     <Navigation />
-                    <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} tempCartItems={tempCartItems} />
+                    <HeaderButtons isCartOpen={isCartOpen} handleCartClick={handleCartClick} tempCartItems={tempCartItems} handleOpenAuthPopup={handleOpenAuthPopup} />
                 </div>
             </div>
         </header>

@@ -9,17 +9,15 @@ import Tooltip from '@mui/material/Tooltip';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Cart from "../../Cart/Cart";
 
 
-export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartItems }) {
+export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartItems, handleOpenAuthPopup }) {
     const temp = 0;
-
-    function openAuthPopup() {
-        console.log("opened");
-    }
+    const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
     
     return (
         <div className="header__buttons">
@@ -43,15 +41,15 @@ export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartIte
                 {
                     temp === 1 ? 
                     <Link 
-                    aria-label="Профиль"
-                    className="header__button header__button_profile" 
-                    to="/profile"
+                        aria-label="Профиль"
+                        className="header__button header__button_profile" 
+                        to="/profile"
                     // title="Профиль"
                     >
                         <PersonOutlineIcon />
                     </Link>
                     :
-                    <IconButton className="header__button header__button_profile"  onClick={openAuthPopup}>
+                    <IconButton className="header__button header__button_profile"  onClick={handleOpenAuthPopup}>
                         <PersonOutlineIcon />
                     </IconButton>
                 }

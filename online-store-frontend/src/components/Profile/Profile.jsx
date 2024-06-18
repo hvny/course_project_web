@@ -3,7 +3,6 @@ import "./Profile.css";
 import { 
   Button, 
   Dialog,
-  StyledEngineProvider
 } from "@mui/material";
 import DialogContent from '@mui/material/DialogContent';
 
@@ -11,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 
 import { joiResolver } from "@hookform/resolvers/joi";
-import userDataScheme from "../../utils/schemes/userDataScheme";
+// import userDataScheme from "../../utils/schemes/RegScheme.js";
 
 import DataTable from "../DataTable/DataTable.jsx";
 import AddressForm from "./AddressForm/AddressForm.jsx";
@@ -23,7 +22,7 @@ export default function Profile({ user }) {
 
   //localStorage.clear();
   const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
-    resolver:  joiResolver(userDataScheme),
+    // resolver:  joiResolver(userDataScheme),
     defaultValues: {
       firstName: user ? user.firstName : "",
       phoneNumber: user ? user.phoneNumber : "",

@@ -15,6 +15,7 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import CustomBottomNavigation from "../CustomBottomNavigation/CustomBottomNavigation";
+import AuthForm from "../AuthForm/AuthForm";
 
 import hachapuriImg from "../../images/hachapuri.jpg";
 import medovikImg from "../../images/medovik.jpeg";
@@ -23,11 +24,20 @@ import potatoImg from "../../images/potato.jpg";
 import milkshakeImg from "../../images/milkshake.jpg";
 import eventImg from "../../images/eventExample.jpg";
 
+import { 
+  Button, 
+  Dialog,
+} from "@mui/material";
+import DialogContent from '@mui/material/DialogContent';
+
 import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/test";
 
 export default function App() {
   const [itemsArr, setItemsArr] = useState([]);
   const [user, setUser] = useState({});
+  const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
+
+    
 
   const bakeryItems = [
     {
@@ -97,10 +107,13 @@ export default function App() {
     }
   }, []); 
 
+  function handleOpenAuthPopup() {
+    setIsAuthPopupOpen(!isAuthPopupOpen);
+  }
 
   return (
     <div className="page">
-      <Header tempCartItems={cartItems} />
+      <Header tempCartItems={cartItems} handleOpenAuthPopup={handleOpenAuthPopup} />
       <main className="main">
         <Routes>
           <Route 
@@ -119,6 +132,16 @@ export default function App() {
           <Route path="/profile" element={<Profile user={user} />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        <Dialog
+          open={isAuthPopupOpen}
+          onClose={handleOpenAuthPopup}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <DialogContent style={{width:"300px", padding: 0, height: "450px"}}>
+            <AuthForm />
+          </DialogContent>
+        </Dialog>
       </main>
       <CustomBottomNavigation />  
       <Footer />
