@@ -1,12 +1,16 @@
 import "./AuthForm.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm, Controller  } from "react-hook-form";
 
 import { Button } from "@mui/material";
 import { StyledEngineProvider } from "@mui/material";
 
+import RegForm from "./RegForm/RegForm";
+import LoginForm from "./LoginForm/LoginForm";
+
 import regScheme from "../../utils/schemes/RegScheme";
+import loginScheme from "../../utils/schemes/loginScheme";
 import { joiResolver } from "@hookform/resolvers/joi";
 
 import { CssTextField } from "../../utils/constants/profileConstants";
@@ -15,13 +19,16 @@ export default function AuthForm() {
     const [isRegButtonClicked, setIsRegButtonClicked] = useState(true);
     const [isLoginButtonClicked, setIsLoginButtonClicked] = useState(false);
 
-    const { register, handleSubmit, control, formState: {isValid, errors}, trigger } = useForm({
-        resolver: joiResolver(regScheme)
+    const { handleSubmit, control, formState: {isValid, errors}, trigger } = useForm({
+        resolver: joiResolver(isRegButtonClicked ? regScheme : loginScheme)
     });
 
     function regFormOnSubmit(data) {
-        console.log(data);
-        console.log(errors);
+        console.log("reg: ", data);
+    };   
+
+    function loginFormOnSubmit(data) {
+        console.log("login: ", data);
     };   
 
     function handleRegButton() {
@@ -47,77 +54,13 @@ export default function AuthForm() {
                 </ul>
                 <div className="auth-form__form-container">
                     <h2 className="auth-form__title">{isRegButtonClicked ? "Добро пожаловать" : "Вход"}</h2>
-                    {
-                        isRegButtonClicked ? 
-                            <form onSubmit={handleSubmit(regFormOnSubmit)} className="auth-form__form auth-form__form_reg">
-                                <Controller
-                                    control={control}
-                                    name="firstName"
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <CssTextField
-                                            className="auth-form__input"
-                                            label="Имя"
-                                            title="Имя"
-                                            {...field}
-                                            error={!!errors?.firstName}
-                                            helperText={errors?.firstName?.message}
-                                            onChange={(event) => {
-                                                field.onChange(event);
-                                                trigger("firstName").then(() => {
-                                                    console.log("err: ", errors?.firstName);
-                                                  });
-                                            }}
-                                        />
-                                    )}
-                                />
-                                <Controller
-                                    control={control}
-                                    name="phoneNumber"
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <CssTextField
-                                            className="auth-form__input"
-                                            label="Номер телефона"
-                                            title="Номер телефона"
-                                            {...field}
-                                            error={!!errors?.phoneNumber}
-                                            helperText={errors?.phoneNumber?.message}
-                                            onBlur={(event) => {
-                                                field.onBlur(event);
-                                                trigger("phoneNumber");
-                                            }}
-                                        />
-                                    )}
-                                />
-                                <Controller
-                                    control={control}
-                                    name="password"
-                                    defaultValue=""
-                                    render={({ field }) => (
-                                        <CssTextField
-                                            label="Пароль"
-                                            title="Пароль"
-                                            className="auth-form__input"
-                                            {...field}
-                                            error={!!errors?.password}
-                                            helperText={errors?.password?.message}
-                                            onBlur={(event) => {
-                                                field.onBlur(event);
-                                                trigger("password");
-                                            }}
-                                        />
-                                    )}
-                                />
-                                <Button className="auth-form__button auth-form__button_submit" color="primary" variant="contained" type="submit" disabled={!isValid}>Отправить</Button>
-                            </form>
-                        :
-                            <div className="auth-form__login">
-                                Login
-                            </div>
-                    }
+                        {
+                            isRegButtonClicked ?
+                                <RegForm submitFunction={regFormOnSubmit}/>
+                            :
+                                <LoginForm submitFunction={loginFormOnSubmit} />
+                        }
                 </div>
-                
             </div>
         </StyledEngineProvider>  
     );

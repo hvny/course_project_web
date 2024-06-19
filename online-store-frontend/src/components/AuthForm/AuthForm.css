@@ -33,7 +33,7 @@
 
 .auth-form__button_submit {
     background-color: #F6B221;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .auth-form__button_submit:hover {
@@ -55,7 +55,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: 25px;
+    /* row-gap: 25px; */
+}
+
+.auth-form__form-item {
+    height: 85px;
 }
 
 .auth-form__input {
