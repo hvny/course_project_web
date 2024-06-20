@@ -24,8 +24,8 @@ public class User {
     @Column(nullable = true)
     private String refreshToken;
 
-    /*@OneToMany(mappedBy = "user")
-    private Set<Address> addresses = new LinkedHashSet<>();*/
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;

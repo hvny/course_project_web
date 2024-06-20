@@ -32,11 +32,19 @@ import DialogContent from '@mui/material/DialogContent';
 
 import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/test";
 
+import { getUserInfo } from "../../utils/api/services/user.service.ts";
+
 export default function App() {
   const [itemsArr, setItemsArr] = useState([]);
   const [user, setUser] = useState({});
   const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
-
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getUserInfo();
+    }
+  })
     
 
   const bakeryItems = [

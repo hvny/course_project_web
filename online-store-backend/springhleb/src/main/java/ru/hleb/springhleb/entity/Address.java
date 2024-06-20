@@ -3,7 +3,8 @@ package ru.hleb.springhleb.entity;
 import jakarta.persistence.*;
 import lombok.*;
 @Data
-@Builder
+@Entity
+@Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +25,8 @@ public class Address {
 
     @Column(name = "apartment")
     private String apartment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

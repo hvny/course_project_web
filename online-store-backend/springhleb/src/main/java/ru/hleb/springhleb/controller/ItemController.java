@@ -18,7 +18,7 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
 
-   /* @GetMapping
+   @GetMapping
     public ResponseEntity<?> getItems() {
         try {
             List<Item> items = itemService.getItems();
@@ -26,23 +26,5 @@ public class ItemController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-    }*/
-   @GetMapping
-   public ResponseEntity<?> getItems(HttpServletRequest request) {
-       String authorizationHeader = request.getHeader("Authorization");
-       if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-           return ResponseEntity.badRequest().body("Missing or invalid Authorization header");
-       }
-       String token = authorizationHeader.substring("Bearer ".length());
-       try {
-           Claims claims = Jwts.parser()
-                   .setSigningKey("your-secret-key".getBytes())
-                   .parseClaimsJws(token)
-                   .getBody();
-           List<Item> items = itemService.getItems();
-           return ResponseEntity.ok(items); // Возвращаем список товаров
-       } catch (Exception e) {
-           return ResponseEntity.badRequest().body("Invalid or expired token");
-       }
-   }
+    }
 }
