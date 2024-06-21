@@ -3,6 +3,7 @@ import "./ItemPopup.css";
 import { useState, useEffect } from 'react';
 import { Button, IconButton } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -35,14 +36,16 @@ export default function ItemPopup({item, handleClose, itemsQuantity, handleIncre
                 <h2 className="item-info__title title">{item.title}</h2>
                 <div className="item-info__container">
                     <div className="item-info__main">
-                        <img src={item.image} alt={item.title} className="item-info__image" />
+                        <img src={require(`../../../images/${item.image}`)} alt={item.title} className="item-info__image" />
                     </div>
                     <div className="item-info__about">
                         <div className="item-info__composition-container">
                             <h3 className="item-info__subtitle">Состав</h3>
                             <p className="item-info__composition item-info__paragraph">{item.composition}</p>
                         </div>
-                        {
+                        <div className="item-info__button-container">
+                            <h3>{`${item.price} рублей`}</h3>
+                            {/* {
                             itemsQuantity === 0 ? 
                             <Button 
                                 variant="contained" 
@@ -55,15 +58,13 @@ export default function ItemPopup({item, handleClose, itemsQuantity, handleIncre
                             </Button>
                             :
                             <div className="item-info__buttons">
-                                <IconButton onClick={handleDecreaseQuantity} className="item-info__button_plus item-info__button_icon">
-                                    <RemoveIcon />
-                                </IconButton>
-                                <span className="item-info__quantity">{itemsQuantity}</span>
-                                <IconButton onClick={handleIncreaseQuantity} className="item-info__button_minus item-info__button_icon">
-                                    <AddIcon/>
+                                <IconButton onClick={handleDecreaseQuantity} className="card__button card__button_checked">
+                                    <CheckCircleIcon />
                                 </IconButton>
                             </div>
-                        }
+                            } */}
+                        </div>
+                        
                     </div>
                 </div>
                 <IconButton onClick={handleClose} className="item-info__button_close item-info__button_icon">

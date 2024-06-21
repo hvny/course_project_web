@@ -37,6 +37,7 @@
 
 .card__button_add {
     position: absolute;
+    right:5px;
     bottom: 5px;
     border-color: #F6B221;
     color: #F6B221;
@@ -50,6 +51,11 @@
 
 .card__button_checked {
     color: #F6B221;
+}
+
+.card__price {
+    font-size: 17px;
+    color: #663334;
 }
 
 @media screen and (min-width: 650px) and (max-width: 1024px) {

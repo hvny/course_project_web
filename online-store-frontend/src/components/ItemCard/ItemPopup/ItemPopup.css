@@ -57,6 +57,17 @@
     margin: 0;
 }
 
+.item-info__button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-info__price {
+    font-size: 20px;
+}
+
 .item-info__button_add {
     width: 100px;
     height: 30px;

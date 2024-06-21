@@ -38,6 +38,11 @@
     margin:0;
 }
 
+.item-small__price {
+    color: #663334;
+    font-size: 18px;
+}
+
 .item-small__buttons {
 }
 
@@ -62,4 +67,10 @@
     margin: 0 10px;
     color: #663334;
     font-size: 17px;
+}
+
+.item-small__actions {
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
 }

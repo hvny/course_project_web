@@ -22,3 +22,22 @@
 .order__button:hover {
     background-color: rgba(246, 178, 33, .8);;
 }
+
+.order__dialog {
+    background-color: #FCE6C6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order__dialog-title {
+    font-family: 'Roboto', 'arial', sans-serif;
+    color: #663334;
+    font-size: 35px;
+}
+
+.order__dialog-subtitle {
+    font-family: 'Roboto', 'arial', sans-serif;
+    color: #663334;
+    font-size: 26px;
+}

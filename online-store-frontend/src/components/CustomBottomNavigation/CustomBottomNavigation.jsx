@@ -10,10 +10,12 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import EventIcon from '@mui/icons-material/Event';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 
 
-export default function CustomBottomNavigation() {
+
+export default function CustomBottomNavigation({handleOpenAuthPopup}) {
     const location = useLocation();
     const [currentTarget, setCurrentTarget] = useState(location.pathname);
     return (
@@ -57,9 +59,14 @@ export default function CustomBottomNavigation() {
                     label="Профиль"
                     value={currentTarget}
                     icon={
+                        localStorage.getItem("token") ? 
                         <Link to="/profile">
                             <PersonOutlineIcon className="bottom-nav__icon" />
                         </Link>
+                        :
+                        <IconButton className="header__button header__button_profile"  onClick={handleOpenAuthPopup}>
+                            <PersonOutlineIcon />
+                        </IconButton>
                     }
                     className={`bottom-nav__text ${location.pathname === "/profile" ? "bottom-nav__text_current": ""} `}
                 />

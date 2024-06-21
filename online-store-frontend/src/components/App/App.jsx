@@ -5,7 +5,6 @@ import "../Title/Title.css";
 
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import Header from "../Header/Header";
 import Items from "../Items/Items";
 import Events from "../Events/Events";
@@ -24,6 +23,7 @@ import potatoImg from "../../images/potato.jpg";
 import milkshakeImg from "../../images/milkshake.jpg";
 import eventImg from "../../images/eventExample.jpg";
 
+
 import { 
   Button, 
   Dialog,
@@ -33,27 +33,33 @@ import DialogContent from '@mui/material/DialogContent';
 import {loremIpsumV1, loremIpsumV2, loremIpsumV3} from "../../utils/constants/test";
 
 import { getUserInfo } from "../../utils/api/services/user.service.ts";
+import { getItems } from "../../utils/api/services/items.service.ts";
 
 export default function App() {
   const [itemsArr, setItemsArr] = useState([]);
   const [user, setUser] = useState({});
   const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
-  
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      getUserInfo();
+      setUserInfo();
     }
-  })
-    
+  }, []);
 
-  const bakeryItems = [
-    {
-      title: "Хачапури",
-      image: hachapuriImg,
-      composition: loremIpsumV1,
-    },
-  ];
+  useEffect(() => {
+    getAllItems();
+  }, []);
+
+  async function setUserInfo() {
+    if (!localStorage.getItem("userName") || !localStorage.getItem("userPhoneNumber")) {
+      const response = await getUserInfo();
+      setUser(response);
+      localStorage.setItem("userName", response["firstName"]);
+      localStorage.setItem("userPhoneNumber", response["phoneNumber"]);
+    }
+  }
+    
 
   const dessertsItems = [
     {
@@ -72,15 +78,8 @@ export default function App() {
       composition: loremIpsumV2,
     }
   ];
+  const [cartItems, setCartItems] = useState([]);
 
-  const drinksItems = [
-    {
-      title: "Коктейль",
-      image: milkshakeImg,
-      composition: loremIpsumV3,
-    }
-  ];
-  
   const eventsArr = [
     {
       title: "Акция1",
@@ -91,32 +90,18 @@ export default function App() {
       title: "Акция2",
       image: eventImg,
       about:loremIpsumV3,
-    },/*
-    {
-      title: "Акция2",
-      image: eventImg,
-      about:loremIpsumV3,
     },
-    {
-      title: "Акция2",
-      image: eventImg,
-      about:loremIpsumV3,
-    }*/
   ];
 
-  const [cartItems, setCartItems] = useState(dessertsItems);
 
-
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user"));
-
-    if (userInfo) {
-      setUser(userInfo);
-    }
-  }, []); 
 
   function handleOpenAuthPopup() {
     setIsAuthPopupOpen(!isAuthPopupOpen);
+  }
+
+  async function getAllItems() {
+    const response = await getItems();
+    setItemsArr(response);
   }
 
   return (
@@ -128,14 +113,14 @@ export default function App() {
             path="/" 
             element={
               <Items
-                bakeryItems={bakeryItems}
-                dessertsItems={dessertsItems}
-                drinksItems={drinksItems}
+                allItems={itemsArr}
+                cartItems={cartItems}
+                setCartItems={setCartItems}
               />
             } 
           />
           <Route path="/events" element={<Events eventsArr={eventsArr} />} />
-          <Route path="/order" element={<Order />} />
+          <Route path="/order" element={<Order cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route path="/about-delivery" element={<Delivery />} />
           <Route path="/profile" element={<Profile user={user} />} />
           <Route path="*" element={<PageNotFound />} />
@@ -147,11 +132,11 @@ export default function App() {
           aria-describedby="modal-modal-description"
         >
           <DialogContent style={{width:"300px", padding: 0, height: "450px"}}>
-            <AuthForm />
+            <AuthForm handleOpenAuthPopup={handleOpenAuthPopup} />
           </DialogContent>
         </Dialog>
       </main>
-      <CustomBottomNavigation />  
+      <CustomBottomNavigation handleOpenAuthPopup={handleOpenAuthPopup} />  
       <Footer />
     </div>
   );

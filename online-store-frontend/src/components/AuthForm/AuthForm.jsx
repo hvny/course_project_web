@@ -11,16 +11,18 @@ import LoginForm from "./LoginForm/LoginForm";
 import { registration, login } from "../../utils/utils";
 
 
-export default function AuthForm() {
+export default function AuthForm({handleOpenAuthPopup}) {
     const [isRegButtonClicked, setIsRegButtonClicked] = useState(true);
     const [isLoginButtonClicked, setIsLoginButtonClicked] = useState(false);
 
-    function regFormOnSubmit(data) {
-        registration(data);
+    async function regFormOnSubmit(data) {
+        const response = await registration(data);
+        handleOpenAuthPopup();
     };   
 
-    function loginFormOnSubmit(data) {
-        login(data);
+    async function loginFormOnSubmit(data) {
+        const responce = await login(data);
+        handleOpenAuthPopup();
     };   
 
     function handleRegButton() {

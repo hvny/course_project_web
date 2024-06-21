@@ -2,7 +2,6 @@ import { AxiosError } from 'axios';
 import {register, authorize} from "./api/auth/auth.ts";
 
 
-
 export async function registration(userData) {
     console.log("registration: ", userData);
     const res = await register(userData);

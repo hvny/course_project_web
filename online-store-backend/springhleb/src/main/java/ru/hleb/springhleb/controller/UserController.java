@@ -1,5 +1,6 @@
 package ru.hleb.springhleb.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,32 +43,54 @@ public class UserController {
     }
 
     @PostMapping("/addresses")
-    public ResponseEntity<?> addAddress(@RequestHeader("Authorization") String authorization, @RequestBody Address address) {
-        String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(authorization);
-        User user = userService.getUser(phoneNumber);
-        userService.addAddress(user.getId(), address);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> addAddress(@RequestHeader("Authorization") String authorization, @Valid @RequestBody Address address) {
+        try {
+            String token = authorization.substring("Bearer ".length());
+            String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(token);
+            User user = userService.getUser(phoneNumber);
+            userService.addAddress(user.getId(), address);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Ошибка: Неправильные данные");
+        }
     }
 
     @PutMapping("/addresses/{id}")
     public ResponseEntity<?> editAddress(@RequestHeader("Authorization") String authorization, @PathVariable Long id, @RequestBody Address updatedAddress) {
-        String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(authorization);
-        User user = userService.getUser(phoneNumber);
-        if (!user.getAddresses().contains(updatedAddress)) {
-            throw new AddressNotFoundException("Адрес не найден");
+        try {
+            String token = authorization.substring("Bearer ".length());
+            String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(token);
+            User user = userService.getUser(phoneNumber);
+            Address address = user.getAddresses().stream()
+                    .filter(a -> a.getId().equals(id))
+                    .findFirst()
+                    .orElseThrow(() -> new AddressNotFoundException("Адрес не найден"));
+            if (!address.equals(updatedAddress)) {
+                userService.editAddress(id, updatedAddress);
+            }
+            return ResponseEntity.ok().build();
+        } catch (AddressNotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
-        userService.editAddress(id, updatedAddress);
-        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/addresses/{id}")
     public ResponseEntity<?> deleteAddress(@RequestHeader("Authorization") String authorization, @PathVariable Long id) {
-        String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(authorization);
-        User user = userService.getUser(phoneNumber);
-        if (!user.getAddresses().contains(id)) {
-            throw new AddressNotFoundException("Адрес не найден");
+        try {
+            String token = authorization.substring("Bearer ".length());
+            String phoneNumber = jwtTokenProvider.getPhoneNumberFromToken(token);
+            User user = userService.getUser(phoneNumber);
+            if (!user.getAddresses().contains(id)) {
+                throw new AddressNotFoundException("Адрес не найден");
+            }
+            userService.deleteAddress(id);
+            return ResponseEntity.ok().build();
+        } catch (AddressNotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
-        userService.deleteAddress(id);
-        return ResponseEntity.ok().build();
     }
 }

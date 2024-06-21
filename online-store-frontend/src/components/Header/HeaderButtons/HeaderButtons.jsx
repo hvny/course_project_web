@@ -16,7 +16,7 @@ import Cart from "../../Cart/Cart";
 
 
 export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartItems, handleOpenAuthPopup }) {
-    const temp = 0;
+    //const token = localStorage.getItem("token");
     const [isAuthPopupOpen, setIsAuthPopupOpen] = useState(false);
     
     return (
@@ -39,7 +39,7 @@ export default function HeaderButtons({ isCartOpen, handleCartClick, tempCartIte
             </Drawer>
             <Tooltip title="Профиль">
                 {
-                    temp === 1 ? 
+                    localStorage.getItem("token") ? 
                     <Link 
                         aria-label="Профиль"
                         className="header__button header__button_profile" 

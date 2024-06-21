@@ -1,6 +1,6 @@
 import "./ItemCard.css";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import ItemPopup from './ItemPopup/ItemPopup';
 
@@ -21,7 +21,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-export default function ItemCard({item}) {
+export default function ItemCard({item, addToCart, deleteFromCart}) {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [isButtonClicked, setIsButtonClicked] = useState(false);
     const [itemsQuantity, setItemsQuantity] = useState(0);
@@ -40,16 +40,23 @@ export default function ItemCard({item}) {
 
     function handleAddButtonClick() {
         handleIncreaseQuantity();
+        addToCart(item);
         setIsButtonClicked(!isButtonClicked);
     }
 
+    function handleRemoveButtonClick(item) {
+        handleDecreaseQuantity();
+        deleteFromCart(item);
+    }
+    
     return (
         <Card className="card">
             <CardActionArea onClick={handleCardClick}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={item.image}
+                    image={require(`../../images/${item.image}`)}
+                    //src="/src/images/hachapuri.jpg"
                     alt={item.title}
                 />
                 <CardContent className="card__content">
@@ -76,11 +83,12 @@ export default function ItemCard({item}) {
                 </Box>
             </Modal>
             <CardActions className="card__actions">
+                <h3 className="card__price">{`${item.price} рублей`}</h3>
                 {
                     itemsQuantity === 0 ?
                     <Button size="small" color="primary" className="card__button card__button_add" variant="outlined" onClick={handleAddButtonClick}>Добавить</Button>
                     :
-                    <IconButton onClick={handleDecreaseQuantity} className="card__button card__button_checked">
+                    <IconButton onClick={handleRemoveButtonClick} className="card__button card__button_checked">
                             <CheckCircleIcon />
                     </IconButton>
                 } 

@@ -10,5 +10,6 @@ public interface ItemService {
     public List<Item> getItems();
 
 
+    Item getItemById(Long id);
 }
 

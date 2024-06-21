@@ -6,43 +6,37 @@ import {
 } from "@mui/material";
 import DialogContent from '@mui/material/DialogContent';
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller  } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { joiResolver } from "@hookform/resolvers/joi";
-// import userDataScheme from "../../utils/schemes/RegScheme.js";
+import userDataScheme from "../../utils/schemes/RegScheme.js";
 
 import DataTable from "../DataTable/DataTable.jsx";
 import AddressForm from "./AddressForm/AddressForm.jsx";
 import { CssTextField } from "../../utils/constants/profileConstants.js";
 
+
+
 export default function Profile({ user }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);      //попап добавления адреса
   const [addressesArr, setAddressesArr] = useState([]);
-
-  //localStorage.clear();
-  const {register, handleSubmit, formState: {errors, isValid, isDirty}} = useForm({
-    // resolver:  joiResolver(userDataScheme),
-    defaultValues: {
-      firstName: user ? user.firstName : "",
-      phoneNumber: user ? user.phoneNumber : "",
-      email: user ? user.email : "",
-    },
-  });
-
+  const navigate = useNavigate();
   // const tempAddress = { id: 1, city: "Киров", street: "Пушкина", house: 2, entry: 2, floor: 2, apartment: 2 };
 
   function handlePopup() {
     setIsPopupOpen(!isPopupOpen);
   }
 
-  function userDataOnSubmit(data) {
-    // localStorage.setItem("userName", data.firstName);
-    // localStorage.setItem("email", data.email);
-    // localStorage.setItem("phoneNumber", data.phoneNumber);
-    localStorage.setItem("user", JSON.stringify(data));
-    console.log(data);
+  function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userPhoneNumber");
+    navigate("/");
+    window.location.reload()
   }
+
 
   return (
     <section className="profile">
@@ -50,7 +44,6 @@ export default function Profile({ user }) {
       <div className="profile__content">
         <form 
           className="profile__form profile__container"
-          onSubmit={handleSubmit(userDataOnSubmit)}
           // isvalid={isValid}
         >
           <h2 className="profile__subtitle">Ваши данные</h2>
@@ -60,36 +53,24 @@ export default function Profile({ user }) {
             label="Имя" 
             title="Ваше имя"
             aria-label="Поле вввода для имени"
-            {...register("firstName")}
+            defaultValue={localStorage.getItem("userName")}
+            disabled
+            // {...register("firstName")}
           />
-          <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
           <CssTextField 
             id="outlined-basic"
             className="profile__input"
             label="Номер телефона" 
             title="Ваш номер телефона"
             aria-label="Поле вввода для номера телефона"
-            {...register("phoneNumber")}
+            defaultValue={localStorage.getItem("userPhoneNumber")}
+            disabled
+            // {...register("phoneNumber")}
           />
-          <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
-          <CssTextField 
-            id="outlined-basic"
-            className="profile__input"
-            label="E-mail" 
-            title="Ваша электронная почта"
-            aria-label="Поле вввода для электронной почты"
-            {...register("email")}
-          />
-          <span className={`profile__form-error ${!isValid && errors.name ? "profile__form-error_active" : ""}`}>{errors.name || ""}</span>
-          <Button 
-            variant="outlined" 
-            type="submit" 
-            className="profile__button profile__button_submit"
-          >
-            Сохранить
-          </Button>
+          <Button className="profile__button" onClick={logout}>Выйти</Button>
         </form>
-        <div className="profile__address-container profile__container">
+        
+        {/* <div className="profile__address-container profile__container">
           <h2 className="profile__subtitle profile__subtitle_address">Ваши адреса</h2>
           {
             addressesArr.length == 0 ? 
@@ -108,8 +89,8 @@ export default function Profile({ user }) {
               <AddressForm title="Добавить адрес" buttonText="Добавить" />
             </DialogContent>
           </Dialog>
-        </div>
-      </div>
+        </div>*/}
+      </div> 
     </section>
   );
 }
